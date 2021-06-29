@@ -8,7 +8,7 @@ subtitle: ''
 description: 'If you know, you know.'
 keywords:
 author: Kymer
-language: en
+language: zh/hans
 timezone: 'Asia/Shanghai'
 
 # URL
@@ -68,6 +68,8 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  编程 Programming
+  涂鸦 Graffiti
 tag_map:
 
 # Metadata elements
@@ -102,4 +104,6 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/Kymer0615/PersonalWeb
+  branch: master
