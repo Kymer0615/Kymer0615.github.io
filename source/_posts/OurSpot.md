@@ -7,6 +7,7 @@ categories: 涂鸦 Graffiti
 We just could not resist the feeling of releasing the pressure from the cans on the streets -- a mixture of adrenaline and satisfaction so we bought more industrial cans and spray the paints on the walls and many other surfaces. We would ride shared bikes on the 2nd ring road doing simple letters and taking photos of other local writers' works.
 <a href="https://ibb.co/cCK4CXL"><img src="https://i.ibb.co/qWLTWF5/IMG-3578.jpg" alt="IMG-3578" border="0" width="600"></a>
 - Me doing a quick one on a graffiti that was cleaned(used it as the fillin)⬆.
+<!-- more -->
 <a href="https://ibb.co/vHcXJHc"><img src="https://i.ibb.co/0cnsfcn/IMG-4630.jpg" alt="IMG-4630" border="0" width="600"></a>
 <a href="https://ibb.co/Ky7wys1"><img src="https://i.ibb.co/Yj8Zjdr/IMG-4615.jpg" alt="IMG-4615" border="0" width="600" ></a>
 - 2G the most respected bombing crew in China⬆.
