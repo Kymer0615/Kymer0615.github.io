@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh/hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简单的实例开始项目创建项目 Syntax: scrapy startproject  [project_dir]  添加新spider Syntax: scrapy genspider [-t template]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scrapy study">
+<meta property="og:url" content="http://example.com/2021/06/29/Scrapy/index.html">
+<meta property="og:site_name" content="Cyber Ghetto">
+<meta property="og:description" content="简单的实例开始项目创建项目 Syntax: scrapy startproject  [project_dir]  添加新spider Syntax: scrapy genspider [-t template]">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-06-29T08:21:55.000Z">
+<meta property="article:modified_time" content="2021-06-30T05:33:47.213Z">
+<meta property="article:author" content="Kymer">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Crawler">
+<meta property="article:tag" content="Scrapy">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/06/29/Scrapy/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh/hans'
+  };
+</script>
+
+  <title>Scrapy study | Cyber Ghetto</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Cyber Ghetto</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/29/Scrapy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kymer">
+      <meta itemprop="description" content="If you know, you know.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cyber Ghetto">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Scrapy study
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-29 16:21:55" itemprop="dateCreated datePublished" datetime="2021-06-29T16:21:55+08:00">2021-06-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-30 13:33:47" itemprop="dateModified" datetime="2021-06-30T13:33:47+08:00">2021-06-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="简单的实例"><a href="#简单的实例" class="headerlink" title="简单的实例"></a>简单的实例</h1><h2 id="开始项目"><a href="#开始项目" class="headerlink" title="开始项目"></a>开始项目</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ul>
+<li>Syntax: <strong>scrapy startproject <project_name> [project_dir]</strong></li>
+</ul>
+<h3 id="添加新spider"><a href="#添加新spider" class="headerlink" title="添加新spider"></a>添加新spider</h3><ul>
+<li>Syntax: <strong>scrapy genspider [-t template] <name> <domain></strong><span id="more"></span>
+<h2 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h2>这是一个简单的Spider类(继承于官方的class),其拥有一个唯一的name属性(不能和其他组建同名),start_requests生成器含有最开始爬取的urls并对每个url使用Request以获取相对应的response<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuotesSpider</span>(<span class="params">scrapy.Spider</span>):</span></span><br><span class="line">    name = <span class="string">&quot;quotes&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_requests</span>(<span class="params">self</span>):</span></span><br><span class="line">        urls = [</span><br><span class="line">            <span class="string">&#x27;http://quotes.toscrape.com/page/1/&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;http://quotes.toscrape.com/page/2/&#x27;</span>,</span><br><span class="line">        ]</span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(url=url, callback=self.parse)</span><br><span class="line"><span class="comment">#根据初始的url的生成器 会用Request函数返回每个url对应的response</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>parse method用于解析所获得的response,这里将所获得html信息储存到本地文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#class QuotesSpider(scrapy.Spider):</span></span><br><span class="line"><span class="comment">#...</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        page = response.url.split(<span class="string">&quot;/&quot;</span>)[-<span class="number">2</span>]</span><br><span class="line">        filename = <span class="string">f&#x27;quotes-<span class="subst">&#123;page&#125;</span>.html&#x27;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(response.body)</span><br><span class="line">        self.log(<span class="string">f&#x27;Saved file <span class="subst">&#123;filename&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>根据Scrapy内置的功能可以进一步简化代码的结构,这里可以忽略start_requests生成器并只使用一个start_urls列表<br>同时这段代码精进了解析的部分,使用css selector来选择html页面的特定信息,并储存在一个字典中<br>因为这是一个生成器,当前页面爬取完毕之后会处理下一个yield指令–获取下一个页面的url信息并执行Request得到response</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuotesSpider</span>(<span class="params">scrapy.Spider</span>):</span></span><br><span class="line">    name = <span class="string">&quot;quotes&quot;</span></span><br><span class="line">    start_urls = [</span><br><span class="line">        <span class="string">&#x27;http://quotes.toscrape.com/page/1/&#x27;</span>,</span><br><span class="line">    ]</span><br><span class="line"><span class="comment">#scrapy内置有method直接可以读取start_urls</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        <span class="keyword">for</span> quote <span class="keyword">in</span> response.css(<span class="string">&#x27;div.quote&#x27;</span>):</span><br><span class="line">            <span class="comment">#quote 依旧是selector类型的object</span></span><br><span class="line">            <span class="keyword">yield</span> &#123;</span><br><span class="line">                <span class="string">&#x27;text&#x27;</span>: quote.css(<span class="string">&#x27;span.text::text&#x27;</span>).get(),</span><br><span class="line">                <span class="string">&#x27;author&#x27;</span>: quote.css(<span class="string">&#x27;small.author::text&#x27;</span>).get(),</span><br><span class="line">                <span class="comment">#get method 获取根据css得到的信息 </span></span><br><span class="line">                <span class="comment">#Serialize and return the matched nodes in a single unicode string. </span></span><br><span class="line">                <span class="comment">#Percent encoded content is unquoted.</span></span><br><span class="line">                <span class="string">&#x27;tags&#x27;</span>: quote.css(<span class="string">&#x27;div.tags a.tag::text&#x27;</span>).getall(),</span><br><span class="line">                <span class="comment">#Serialize and return the matched node in a 1-element list of unicode strings.</span></span><br><span class="line">                <span class="comment">#This method is added to Selector for consistency; it is more useful with SelectorList. </span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        next_page = response.css(<span class="string">&#x27;li.next a::attr(href)&#x27;</span>).get()</span><br><span class="line">        <span class="keyword">if</span> next_page <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            next_page = response.urljoin(next_page)</span><br><span class="line">            <span class="comment">#We use the urljoin() since the links can be relative</span></span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(next_page, callback=self.parse)</span><br></pre></td></tr></table></figure>
+
+<p>最后部分的urljoin()可以优化使用response.follow method,其更加便捷(处理相对路径),但仍需要yield response</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#class QuotesSpider(scrapy.Spider):</span></span><br><span class="line"><span class="comment">#...</span></span><br><span class="line">    <span class="comment">#def parse(self, response):</span></span><br><span class="line">    <span class="comment">#...</span></span><br><span class="line">        <span class="keyword">if</span> next_page <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">yield</span> response.follow(next_page, callback=self.parse)</span><br></pre></td></tr></table></figure>
+
+<p>这里也可以直接传递一个selector对象到response.follow     </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#class QuotesSpider(scrapy.Spider):</span></span><br><span class="line"><span class="comment">#...</span></span><br><span class="line">    <span class="comment">#def parse(self, response):</span></span><br><span class="line">    <span class="comment">#...</span></span><br><span class="line">        <span class="keyword">for</span> href <span class="keyword">in</span> response.css(<span class="string">&#x27;ul.pager a::attr(href)&#x27;</span>):</span><br><span class="line">        <span class="comment">#对于&lt;a&gt; element 可以直接写成response.css(&#x27;ul.pager a&#x27;)</span></span><br><span class="line">            <span class="keyword">yield</span> response.follow(href, callback=self.parse)</span><br></pre></td></tr></table></figure>
+<p>当有个requests的iterable可以直接使用follow_all method</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#class QuotesSpider(scrapy.Spider):</span></span><br><span class="line"><span class="comment">#...</span></span><br><span class="line">    <span class="comment">#def parse(self, response):</span></span><br><span class="line">    <span class="comment">#...</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">from</span> response.follow_all(css=<span class="string">&#x27;ul.pager a&#x27;</span>, callback=self.parse)</span><br></pre></td></tr></table></figure>
+<p> By default, Scrapy filters out duplicated requests to URLs already visited, avoiding the problem of hitting servers too much because of a programming mistake. This can be configured by the setting <strong>DUPEFILTER_CLASS</strong></p>
+<h2 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AuthorSpider</span>(<span class="params">scrapy.Spider</span>):</span></span><br><span class="line">    name = <span class="string">&#x27;author&#x27;</span></span><br><span class="line"></span><br><span class="line">    start_urls = [<span class="string">&#x27;http://quotes.toscrape.com/&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        author_page_links = response.css(<span class="string">&#x27;.author + a&#x27;</span>)</span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">from</span> response.follow_all(author_page_links, self.parse_author)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#当前页面的author信息爬取完毕后获取下个下个页面的url并爬取</span></span><br><span class="line">        pagination_links = response.css(<span class="string">&#x27;li.next a&#x27;</span>)</span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">from</span> response.follow_all(pagination_links, self.parse)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_author</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">extract_with_css</span>(<span class="params">query</span>):</span></span><br><span class="line">            <span class="keyword">return</span> response.css(query).get(default=<span class="string">&#x27;&#x27;</span>).strip()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">yield</span> &#123;</span><br><span class="line">            <span class="string">&#x27;name&#x27;</span>: extract_with_css(<span class="string">&#x27;h3.author-title::text&#x27;</span>),</span><br><span class="line">            <span class="string">&#x27;birthdate&#x27;</span>: extract_with_css(<span class="string">&#x27;.author-born-date::text&#x27;</span>),</span><br><span class="line">            <span class="string">&#x27;bio&#x27;</span>: extract_with_css(<span class="string">&#x27;.author-description::text&#x27;</span>),</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="命令行操作"><a href="#命令行操作" class="headerlink" title="命令行操作"></a>命令行操作</h2><h3 id="存储爬取到的信息"><a href="#存储爬取到的信息" class="headerlink" title="存储爬取到的信息"></a>存储爬取到的信息</h3><p>在命令行中输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy crawl quotes -O quotes.json</span><br></pre></td></tr></table></figure>
+<p>其中 </p>
+<ul>
+<li><strong>quotes</strong> 代表crawler的名字</li>
+<li><strong>-O</strong> switch overwrites any existing file</li>
+<li><strong>-o</strong> append new content to any existing file</li>
+<li>可以将最后文件格式换成其他格式如.jl</li>
+</ul>
+<h3 id="添加属性"><a href="#添加属性" class="headerlink" title="添加属性"></a>添加属性</h3><p>在命令行中输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy crawl quotes -O quotes-humor.json -a tag=humor</span><br></pre></td></tr></table></figure>
+<p><strong>-a</strong> command 将humor添加为spider的属性这样就可以使用tag属性来访问特定的网页</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Crawler/" rel="tag"># Crawler</a>
+              <a href="/tags/Scrapy/" rel="tag"># Scrapy</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/30/firstTryout/" rel="next" title="First Tryout">
+      First Tryout <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">简单的实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.</span> <span class="nav-text">开始项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%B0spider"><span class="nav-number">1.1.2.</span> <span class="nav-text">添加新spider</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B1"><span class="nav-number">1.2.</span> <span class="nav-text">实例1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B2"><span class="nav-number">1.3.</span> <span class="nav-text">实例2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C"><span class="nav-number">1.4.</span> <span class="nav-text">命令行操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%88%AC%E5%8F%96%E5%88%B0%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">1.4.1.</span> <span class="nav-text">存储爬取到的信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7"><span class="nav-number">1.4.2.</span> <span class="nav-text">添加属性</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Kymer</p>
+  <div class="site-description" itemprop="description">If you know, you know.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kymer</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
