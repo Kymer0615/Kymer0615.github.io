@@ -64,8 +64,7 @@ class QuotesSpider(scrapy.Spider):
                 #Serialize and return the matched nodes in a single unicode string. 
                 #Percent encoded content is unquoted.
                 'tags': quote.css('div.tags a.tag::text').getall(),
-                #Serialize and return the matched node in a 1-element list of unicode strings.
-                #This method is added to Selector for consistency; it is more useful with SelectorList. 
+                #.getall() returns a list with all results
             }
 
         next_page = response.css('li.next a::attr(href)').get()
