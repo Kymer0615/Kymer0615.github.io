@@ -105,5 +105,5 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/Kymer0615/PersonalWeb
+  repo: https://github.com/Kymer0615/Kymer0615.github.io
   branch: master
