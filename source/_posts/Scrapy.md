@@ -28,7 +28,8 @@ class QuotesSpider(scrapy.Spider):
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
-#根据初始的url的生成器 会用Request函数返回每个url对应的response
+#根据初始的url用Request函数返回每个url对应的response
+#这个method必须是生成器
 {% endcodeblock %}
 
 parse method用于解析所获得的response,这里将所获得html信息储存到本地文件
