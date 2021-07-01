@@ -29,7 +29,7 @@
 <meta property="og:description" content="简单的实例开始项目创建项目 Syntax: scrapy startproject  [project_dir]  添加新spider Syntax: scrapy genspider [-t template]">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-06-29T08:21:55.000Z">
-<meta property="article:modified_time" content="2021-06-30T08:52:43.332Z">
+<meta property="article:modified_time" content="2021-07-01T01:51:41.661Z">
 <meta property="article:author" content="Kymer">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Crawler">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-30 16:52:43" itemprop="dateModified" datetime="2021-06-30T16:52:43+08:00">2021-06-30</time>
+                <time title="Modified: 2021-07-01 09:51:41" itemprop="dateModified" datetime="2021-07-01T09:51:41+08:00">2021-07-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,7 +255,7 @@
 </ul>
 <h3 id="添加新spider"><a href="#添加新spider" class="headerlink" title="添加新spider"></a>添加新spider</h3><ul>
 <li>Syntax: <strong>scrapy genspider [-t template] <name> <domain></strong><span id="more"></span>
-<h2 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h2>这是一个简单的Spider类(继承于官方的class),其拥有一个唯一的name属性(不能和其他组建同名),start_requests生成器含有最开始爬取的urls并对每个url使用Request以获取相对应的response<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuotesSpider</span>(<span class="params">scrapy.Spider</span>):</span></span><br><span class="line">    name = <span class="string">&quot;quotes&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_requests</span>(<span class="params">self</span>):</span></span><br><span class="line">        urls = [</span><br><span class="line">            <span class="string">&#x27;http://quotes.toscrape.com/page/1/&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;http://quotes.toscrape.com/page/2/&#x27;</span>,</span><br><span class="line">        ]</span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(url=url, callback=self.parse)</span><br><span class="line"><span class="comment">#根据初始的url的生成器 会用Request函数返回每个url对应的response</span></span><br></pre></td></tr></table></figure></li>
+<h2 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h2>这是一个简单的Spider类(继承于官方的class),其拥有一个唯一的name属性(不能和其他组建同名),start_requests生成器含有最开始爬取的urls并对每个url使用Request以获取相对应的response<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QuotesSpider</span>(<span class="params">scrapy.Spider</span>):</span></span><br><span class="line">    name = <span class="string">&quot;quotes&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_requests</span>(<span class="params">self</span>):</span></span><br><span class="line">        urls = [</span><br><span class="line">            <span class="string">&#x27;http://quotes.toscrape.com/page/1/&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;http://quotes.toscrape.com/page/2/&#x27;</span>,</span><br><span class="line">        ]</span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(url=url, callback=self.parse)</span><br><span class="line"><span class="comment">#根据初始的url用Request函数返回每个url对应的response</span></span><br><span class="line"><span class="comment">#这个method必须是生成器</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>parse method用于解析所获得的response,这里将所获得html信息储存到本地文件</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#class QuotesSpider(scrapy.Spider):</span></span><br><span class="line"><span class="comment">#...</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        page = response.url.split(<span class="string">&quot;/&quot;</span>)[-<span class="number">2</span>]</span><br><span class="line">        filename = <span class="string">f&#x27;quotes-<span class="subst">&#123;page&#125;</span>.html&#x27;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(response.body)</span><br><span class="line">        self.log(<span class="string">f&#x27;Saved file <span class="subst">&#123;filename&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
@@ -304,10 +304,7 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/06/29/Scrapy%202/" rel="prev" title="Scrapy study">
-      <i class="fa fa-chevron-left"></i> Scrapy study
-    </a></div>
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
     <a href="/2021/06/30/firstTryout/" rel="next" title="First Tryout">
       First Tryout <i class="fa fa-chevron-right"></i>
@@ -385,7 +382,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -433,6 +430,10 @@
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
         
 <div class="busuanzi-count">
