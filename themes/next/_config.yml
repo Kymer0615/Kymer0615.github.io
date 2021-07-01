@@ -612,7 +612,7 @@ changyan:
 valine:
   enable: true
   appid: jMzJ2pEXPe5P1IImhArwDeVx-gzGzoHsz
-  appkey: wm9DBHKSYjaSTtsWfDM5xFbD# Your leancloud application appkey
+  appkey: wm9DBHKSYjaSTtsWfDM5xFbD
   notify: false # Mail notifier
   verify: false # Verification code
   placeholder: Leave a comment ;) # Comment box placeholder
