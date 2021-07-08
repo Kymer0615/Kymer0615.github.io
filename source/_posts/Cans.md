@@ -9,7 +9,10 @@ We started to do more stickers and tags in different spots and on the baskets of
 <a href="https://ibb.co/zF0df89"><img src="https://i.ibb.co/jz1t4V0/IMG-2652.jpg" alt="IMG-2652" border="0" width="600"></a>
 <!-- more -->
 <a href="https://ibb.co/gScBkC4"><img src="https://i.ibb.co/X7GvcTY/IMG-2740.jpg" alt="IMG-2740" border="0" width="600"></a> 
-Clearly the sticker and tags were not enough to get the adrenaline flowing and everybody knows that graffiti writers use cans so we wanted to finish that left behind stencil plan. Gab used a projector to locate the places, on the paper, that are needed to cut out (shout out to Gab).
+Clearly the sticker and tags were not enough to get the adrenaline flowing and everybody knows that graffiti writers use cans so we wanted to finish that left behind stencil plan. 
+<a href="https://ibb.co/1T30qQZ"><img src="https://i.ibb.co/Zx3f8Xd/Unnamed-file.jpg" alt="Unnamed-file" border="0" width="600"></a>
+- Gab used a projector to locate the places, on the paper, that are needed to cut out (shout out to Gab!)⬆.
+
 <!-- 显然贴纸和签名并不能再让我们肾上腺素飙升了，我们自然而然的想用喷漆罐去做“真正”的涂鸦，所以我们想把去年没做成的模具涂鸦做完。Gab用投影仪来确定一张纸上需要被切掉的部分然后制作出了一张金鱼模具(shout out to Gab)。 -->
 Now we need to consider what type of spray paint cans are we looking for and where can we buy cans. The industrial spray cans are not on the list because they are just too shitty for such relatively dedicated work. So we found an art supply shop and bought some Montana hardcore spray cans for about 30-40 rmb each. Once we got everything, we went to a skate board park at night and executed the mission.
 <!-- 之后我们需要考虑买哪种喷漆和在哪里买喷漆。工业漆根本不在考量范围内因为它真的很垃圾，所以我们去画材店买了三四十元一瓶的Montana hardcore喷漆。晚上我们去了一个滑板场然后把金鱼喷了。 -->

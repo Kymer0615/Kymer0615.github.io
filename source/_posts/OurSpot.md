@@ -23,6 +23,7 @@ We just could not resist the feeling of releasing the pressure from the cans on 
 <!-- - D9 团队喜欢巧妙地用负空间来勾勒他们的队名，所以我们也尝试了些类似的⬆。 -->
 <a href="https://ibb.co/Z8t9Y5G"><img src="https://i.ibb.co/LtbKJmY/IMG-3533.jpg" alt="IMG-3533" border="0" width="600"></a>
 - Where is D9?⬆.
+
 <!-- - D9 在哪⬆？ -->
 After doing bombings for some consecutive weeks, we got to know more about graffiti and how to do graffiti. Therefore, we were long for a spot to do some works under daylights and spend time to add more details. And yeah we found an abandoned place in the west side of the city. The entrance was blocked with a shitty mattress and, once we entered the area, there was a sewage ditch on the right side and the left side was overgrown with pricky bushes(you have to wear trousers). We explored the whole area and did some shitty letters in one of the buildings.
 <!-- 在我们连续炸了几周的街之后，我们对于涂鸦的理解提升了，所以想找一个地方在白天去画一些细节更多的涂鸦。我们在西门找到一个废弃的地方，那个地方的入口被一张脏兮兮的床垫掩住，进去之后右边是臭水沟左边是扎人的草丛（所以必须得穿长裤）。我们把整个地方逛了一遍后在某个楼里写了些很拉垮的字。 -->
