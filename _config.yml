@@ -104,8 +104,9 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  repo: 
-    - git@github.com:Kymer0615/Kymer0615.github.io
-    - git@e.coding.net:kymer0615/kymer0615.coding.me/Kymer0615.coding.me.git
+  - type: git
+  repo: git@github.com:Kymer0615/Kymer0615.github.io
+  branch: master
+  - type: git
+  repo: git@e.coding.net:kymer0615/kymer0615.coding.me/Kymer0615.coding.me.git
   branch: master
