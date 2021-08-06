@@ -391,7 +391,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-06 20:59:13" itemprop="dateModified" datetime="2021-08-06T20:59:13+08:00">2021-08-06</time>
+                <time title="Modified: 2021-08-06 22:58:30" itemprop="dateModified" datetime="2021-08-06T22:58:30+08:00">2021-08-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -435,43 +435,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li><p>Purpose<br>This project is used as of a module to pass the CAPTCHA validations so that the crawler can download the desired documents. </p>
-</li>
-<li><p>Ideas </p>
-<ul>
-<li>Get the images from the CAPTCHA requests and do some preprocessing to get each of the letter/number; these data are later used as the dataset.</li>
-<li>Use the CNN model to do the classification.</li>
-<li>Generalize the process so that the parameters for each website can be saved in database or local files.</li>
-</ul>
-</li>
-<li><p>Issues &amp; Solutions</p>
-<ul>
-<li>Pytorch-related<ul>
-<li>When image is stored as a np.array, the shape is in the format of (h,w,c) and, when the <strong>to.tensor</strong> (one of the transformation) in is applied, the image is automatically converted to the shape of (c,h,w).</li>
-<li>When using the checkpoint to get the result, the specifications of the input data(e.g. shape, type) have to be the same as the what it is during the training process. <ul>
-<li>It is better to use the torch.transformation directly with the np.adarray.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Overall<ul>
-<li>The parameters of preprocessing would be different for each website so it is necessary to inject the parameter for each case.<ul>
-<li>First keep the parameter in some json files.</li>
-<li>Keep the input shape of the images the same through out the processes.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Unsolved</p>
-<ul>
-<li>Use the contours to slice images.</li>
-</ul>
-</li>
-</ul>
-
+          <h1 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h1><p>This project is used as of a module to pass the CAPTCHA validations so that the crawler can download the desired documents. </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/01/Pytorch%20CAPTCHA%20Validation/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -521,7 +493,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-06 20:57:53" itemprop="dateModified" datetime="2021-08-06T20:57:53+08:00">2021-08-06</time>
+                <time title="Modified: 2021-08-06 22:58:51" itemprop="dateModified" datetime="2021-08-06T22:58:51+08:00">2021-08-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -584,24 +556,15 @@
 <li>Takes this vector of numbers (usually called attributes) and outputs the final result.<ul>
 <li>Face recognition</li>
 <li>Emotion recognition</li>
-<li>Remote heart rate measurement from the face<h2 id="Pixels-and-colors"><a href="#Pixels-and-colors" class="headerlink" title="Pixels and colors"></a>Pixels and colors</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>The pixel can be considered as function containing the x and y coordinates.</li>
-<li>The function outputs a color represented by a <strong>8-bit number(0-255)</strong>.</li>
-<li>The RGB model indicates three “channels” and each channel indicates a color.</li>
-<li><strong>PPI</strong> stands “for pixel per inch” <ul>
-<li>How many pixels along the width(inches) or height(inches).</li>
-</ul>
-</li>
-<li>The (0,0) of an image in OpenCV is at the <strong>upper left corner</strong>.<h2 id="Access-and-manipulate-pixes-in-OpenCV"><a href="#Access-and-manipulate-pixes-in-OpenCV" class="headerlink" title="Access and manipulate pixes in OpenCV"></a>Access and manipulate pixes in OpenCV</h2><ul>
-<li>cv.imread()</li>
-</ul>
-</li>
-</ul>
-
+<li>Remote heart rate measurement from the face
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/23/CV%20study/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
