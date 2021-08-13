@@ -3,7 +3,13 @@ title: Generative Adversarial Network
 date: 2021-08-13 14:17:55
 tags: ['Python','ML']
 categories: 编程 Programming
+mathjax: true
 ---
+<script src="//yihui.org/js/math-code.js"></script>
+<!-- Just one possible MathJax CDN below. You may use others. -->
+<script async
+  src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 # Training
 - Generator **G**
     - Create some high dimensional object that can fool the discriminator
@@ -15,13 +21,13 @@ categories: 编程 Programming
 <a href="https://ibb.co/GWg1Jmq"><img src="https://i.ibb.co/T4znTys/1281628836217-pic-hd.png" alt="1281628836217-pic-hd" border="0"></a>
 
 ## Generator step: 
-    - Keep the weights in the discriminator 
-    - Update **G** based on the loss produced by **D**
+- Keep the weights in the discriminator 
+- Update **G** based on the loss produced by **D**
 ## Discriminator step: 
-    - **D** inputs a sample from **G** based on **p<sub>z</sub>** and we want the loss to be high
-    - Keep the weights in the **G**
-    - **D** inputs a sample from real world example to make sure the **D** can still distinguish the real ones and fakes
-
+- **D** inputs a sample from **G** based on **p<sub>z</sub>** and we want the loss to be high
+- Keep the weights in the **G**
+- **D** inputs a sample from real world example to make sure the **D** can still distinguish the real ones and fakes
+<!-- more -->
 # Applications and Examples
 ## Superresolution
 <a href="https://ibb.co/9hK8rKd"><img src="https://i.ibb.co/r387w8X/1291628837087-pic-hd.png" alt="1291628837087-pic-hd" border="0"></a>

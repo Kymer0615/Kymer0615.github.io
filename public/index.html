@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-13 14:17:55 / Modified: 16:01:59" itemprop="dateCreated datePublished" datetime="2021-08-13T14:17:55+08:00">2021-08-13</time>
+              <time title="Created: 2021-08-13 14:17:55 / Modified: 16:33:23" itemprop="dateCreated datePublished" datetime="2021-08-13T14:17:55+08:00">2021-08-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +232,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h1><ul>
+          <p><script src="//yihui.org/js/math-code.js"></script><br><!-- Just one possible MathJax CDN below. You may use others. --></p>
+<p><script async
+  src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script></p>
+<h1 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h1><ul>
 <li>Generator <strong>G</strong><ul>
 <li>Create some high dimensional object that can fool the discriminator</li>
 </ul>
@@ -247,79 +251,20 @@
 </ul>
 </li>
 </ul>
-<h2 id="Generator-step"><a href="#Generator-step" class="headerlink" title="Generator step:"></a>Generator step:</h2><pre><code>- Keep the weights in the discriminator 
-- Update **G** based on the loss produced by **D**
-</code></pre>
-<h2 id="Discriminator-step"><a href="#Discriminator-step" class="headerlink" title="Discriminator step:"></a>Discriminator step:</h2><pre><code>- **D** inputs a sample from **G** based on **p&lt;sub&gt;z&lt;/sub&gt;** and we want the loss to be high
-- Keep the weights in the **G**
-- **D** inputs a sample from real world example to make sure the **D** can still distinguish the real ones and fakes
-</code></pre>
-<h1 id="Applications-and-Examples"><a href="#Applications-and-Examples" class="headerlink" title="Applications and Examples"></a>Applications and Examples</h1><h2 id="Superresolution"><a href="#Superresolution" class="headerlink" title="Superresolution"></a>Superresolution</h2><p><a target="_blank" rel="noopener" href="https://ibb.co/9hK8rKd"><img src="https://i.ibb.co/r387w8X/1291628837087-pic-hd.png" alt="1291628837087-pic-hd" border="0"></a></p>
-<ul>
-<li>PSNR (the metric on the left)<ul>
-<li>Peak signal to noise ratio</li>
-</ul>
-</li>
-<li>SSIM (the metric on the right)<ul>
-<li>An image quality reference (High number if the sample image match with the reference image in a “perceptual sense”).</li>
-</ul>
-</li>
-<li>The GAN produced image has sharper details but those details are <strong>completely different</strong> from the original ones even they look reasonable.<ul>
-<li>Pros<ul>
-<li>Creating plausible results</li>
-<li>Images with high qualities</li>
-</ul>
-</li>
-<li>Cons <ul>
-<li>Not accurate</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Relative work<ul>
-<li>ESRGAN(Extended superresolution GAN)</li>
-</ul>
-</li>
-</ul>
-<h2 id="Image-to-Image-Translation-aka-pixel-to-pixel-Isola-et-al-2016"><a href="#Image-to-Image-Translation-aka-pixel-to-pixel-Isola-et-al-2016" class="headerlink" title="Image to Image Translation(aka pixel to pixel) (Isola et al, 2016)"></a>Image to Image Translation(aka pixel to pixel) (Isola et al, 2016)</h2><p><a target="_blank" rel="noopener" href="https://ibb.co/mGRY0F5"><img src="https://i.ibb.co/L80qrhd/1301628837959-pic-hd.png" alt="1301628837959-pic-hd" border="0"></a></p>
-<ul>
-<li>Use <strong>paired images to train</strong> the model and the outputs are completely different from the ground truth.<h2 id="Unparied-image-Translation-Zhu-et-al-2017"><a href="#Unparied-image-Translation-Zhu-et-al-2017" class="headerlink" title="Unparied image Translation (Zhu et al, 2017)"></a>Unparied image Translation (Zhu et al, 2017)</h2><a target="_blank" rel="noopener" href="https://ibb.co/x2wr847"><img src="https://i.ibb.co/BfvYK1C/1321628838935-pic-hd.png" alt="1321628838935-pic-hd" border="0"></a></li>
-<li>In the first pair of images, the zebras are replaced by the horses and the other parts of the image remain the same. This is not possible to find paired images to train and achieve such goals.</li>
-<li>CycleGAN<ul>
-<li>Have a collection of zebras and a collection of horses; then train the model to be able to map horse pictures to zebra pictures and vise versa</li>
-<li>Include two sets of GANS<ol>
-<li>Mapping from zebras to horse</li>
-<li>Mapping from horse to zebras</li>
-</ol>
-</li>
-<li>Apply the <strong>cycle consistency loss</strong><ul>
-<li>zebra image -&gt; horse image -&gt; zebra image</li>
-<li>The two zebra images are close in pixelwise sense</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h1><h2 id="Inception-Score"><a href="#Inception-Score" class="headerlink" title="Inception Score"></a>Inception Score</h2><p>$$<br>\operatorname{IS}(G)=\exp \left(E_{x \sim p a} D_{K L}(p(y \mid x) | p(y))\right)<br>$$</p>
-<ul>
-<li>It is for general use cases unlike SSIM.</li>
-<li>Backbone of Inception Score is a pre-trined classifier called the <strong>Inception Network</strong>.</li>
-<li><strong>p(y|x)</strong> is the Inception’s likelihood that image <strong>x</strong> is class <strong>y</strong>. Expectation is taken over data distribution, which is estimated by a large minibatch.</li>
-<li><strong>D<sub>KL</sub></strong> is the KL divergence that captures the differences between different distributions.<br><a target="_blank" rel="noopener" href="https://ibb.co/CMH8HDC"><img src="https://i.ibb.co/NmyCybD/1331628840072-pic-hd.png" alt="1331628840072-pic-hd" border="0"></a></li>
-<li>We want individual scores to be high when the samples have the same label and similar scores when the samples are different.</li>
-<li><strong>Trade-off between the individual image quality and diversity</strong></li>
-</ul>
-<h2 id="Frechet-Inception-Distance"><a href="#Frechet-Inception-Distance" class="headerlink" title="Frechet Inception Distance"></a>Frechet Inception Distance</h2><p>$$<br>d^{2}\left((\boldsymbol{m}, \boldsymbol{C}),\left(\boldsymbol{m}<em>{w}, \boldsymbol{C}</em>{w}\right)\right)=\left|\boldsymbol{m}-\boldsymbol{m}<em>{w}\right|</em>{2}^{2}+\mathbf{T r}\left(\boldsymbol{C}+\boldsymbol{C}<em>{w}-2\left(\boldsymbol{C} \boldsymbol{C}</em>{w}\right)^{1 / 2}\right)<br>$$</p>
-<ul>
-<li>FID compares the distribution of generated images with the distribution of real images that were used to train the generator.</li>
-<li><strong>m</strong> is a vector of mean Inception activations</li>
-<li><strong>C</strong> is a covariance matrix of Inception activations</li>
-<li><strong>Tr(.)</strong> is the trace of the matrix <h1 id="Self-attention-GAN-Han-Zhang-Lan-Goodfellow-Dimitris-Metaxas-Augustus-Odena"><a href="#Self-attention-GAN-Han-Zhang-Lan-Goodfellow-Dimitris-Metaxas-Augustus-Odena" class="headerlink" title="Self-attention GAN (Han Zhang, Lan Goodfellow, Dimitris Metaxas, Augustus Odena)"></a>Self-attention GAN (Han Zhang, Lan Goodfellow, Dimitris Metaxas, Augustus Odena)</h1></li>
-<li>Huge improvements of the performance<br><a target="_blank" rel="noopener" href="https://ibb.co/1THcvjH"><img src="https://i.ibb.co/89FkKtF/1341628841128-pic-hd.png" alt="1341628841128-pic-hd" border="0"></a><h1 id="Similar-work"><a href="#Similar-work" class="headerlink" title="Similar work"></a>Similar work</h1></li>
-<li>VAE</li>
-<li>Autoregressive</li>
-</ul>
-
+<h2 id="Generator-step"><a href="#Generator-step" class="headerlink" title="Generator step:"></a>Generator step:</h2><ul>
+<li>Keep the weights in the discriminator </li>
+<li>Update <strong>G</strong> based on the loss produced by <strong>D</strong><h2 id="Discriminator-step"><a href="#Discriminator-step" class="headerlink" title="Discriminator step:"></a>Discriminator step:</h2></li>
+<li><strong>D</strong> inputs a sample from <strong>G</strong> based on <strong>p<sub>z</sub></strong> and we want the loss to be high</li>
+<li>Keep the weights in the <strong>G</strong></li>
+<li><strong>D</strong> inputs a sample from real world example to make sure the <strong>D</strong> can still distinguish the real ones and fakes
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/13/gan/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1507,6 +1452,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
