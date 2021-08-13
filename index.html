@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-13 14:17:55 / Modified: 16:01:59" itemprop="dateCreated datePublished" datetime="2021-08-13T14:17:55+08:00">2021-08-13</time>
+              <time title="Created: 2021-08-13 14:17:55 / Modified: 16:10:59" itemprop="dateCreated datePublished" datetime="2021-08-13T14:17:55+08:00">2021-08-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +232,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h1><ul>
+          <script src="//yihui.org/js/math-code.js"></script>
+<!-- Just one possible MathJax CDN below. You may use others. -->
+<script async
+  src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<h1 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h1><ul>
 <li>Generator <strong>G</strong><ul>
 <li>Create some high dimensional object that can fool the discriminator</li>
 </ul>
@@ -247,13 +252,13 @@
 </ul>
 </li>
 </ul>
-<h2 id="Generator-step"><a href="#Generator-step" class="headerlink" title="Generator step:"></a>Generator step:</h2><pre><code>- Keep the weights in the discriminator 
-- Update **G** based on the loss produced by **D**
-</code></pre>
-<h2 id="Discriminator-step"><a href="#Discriminator-step" class="headerlink" title="Discriminator step:"></a>Discriminator step:</h2><pre><code>- **D** inputs a sample from **G** based on **p&lt;sub&gt;z&lt;/sub&gt;** and we want the loss to be high
-- Keep the weights in the **G**
-- **D** inputs a sample from real world example to make sure the **D** can still distinguish the real ones and fakes
-</code></pre>
+<h2 id="Generator-step"><a href="#Generator-step" class="headerlink" title="Generator step:"></a>Generator step:</h2><ul>
+<li>Keep the weights in the discriminator </li>
+<li>Update <strong>G</strong> based on the loss produced by <strong>D</strong><h2 id="Discriminator-step"><a href="#Discriminator-step" class="headerlink" title="Discriminator step:"></a>Discriminator step:</h2></li>
+<li><strong>D</strong> inputs a sample from <strong>G</strong> based on <strong>p<sub>z</sub></strong> and we want the loss to be high</li>
+<li>Keep the weights in the <strong>G</strong></li>
+<li><strong>D</strong> inputs a sample from real world example to make sure the <strong>D</strong> can still distinguish the real ones and fakes</li>
+</ul>
 <h1 id="Applications-and-Examples"><a href="#Applications-and-Examples" class="headerlink" title="Applications and Examples"></a>Applications and Examples</h1><h2 id="Superresolution"><a href="#Superresolution" class="headerlink" title="Superresolution"></a>Superresolution</h2><p><a target="_blank" rel="noopener" href="https://ibb.co/9hK8rKd"><img src="https://i.ibb.co/r387w8X/1291628837087-pic-hd.png" alt="1291628837087-pic-hd" border="0"></a></p>
 <ul>
 <li>PSNR (the metric on the left)<ul>
