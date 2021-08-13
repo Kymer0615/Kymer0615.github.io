@@ -21,15 +21,15 @@
     var CONFIG = {"hostname":"kymer0615.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="BasicsImage processing steps Low-level process Input some images and output different images. Noise removal Image sharpening Illumination normalization Perspective correction     Mid-level process Tak">
+  <meta name="description" content="Pixels and colors The pixel can be considered as function containing the x and y coordinates. The function outputs a color represented by a 8-bit number(0-255). The RGB model indicates three “channels">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Open CV study">
 <meta property="og:url" content="https://kymer0615.github.io/2021/07/23/CV%20study/index.html">
 <meta property="og:site_name" content="Cyber Ghetto">
-<meta property="og:description" content="BasicsImage processing steps Low-level process Input some images and output different images. Noise removal Image sharpening Illumination normalization Perspective correction     Mid-level process Tak">
+<meta property="og:description" content="Pixels and colors The pixel can be considered as function containing the x and y coordinates. The function outputs a color represented by a 8-bit number(0-255). The RGB model indicates three “channels">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-07-23T07:15:21.000Z">
-<meta property="article:modified_time" content="2021-08-06T14:58:51.308Z">
+<meta property="article:modified_time" content="2021-08-10T02:42:25.056Z">
 <meta property="article:author" content="Kymer">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="CV">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-06 22:58:51" itemprop="dateModified" datetime="2021-08-06T22:58:51+08:00">2021-08-06</time>
+                <time title="Modified: 2021-08-10 10:42:25" itemprop="dateModified" datetime="2021-08-10T10:42:25+08:00">2021-08-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,31 +242,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h1><h2 id="Image-processing-steps"><a href="#Image-processing-steps" class="headerlink" title="Image processing steps"></a>Image processing steps</h2><ul>
-<li>Low-level process<ul>
-<li>Input some images and output different images.<ul>
-<li>Noise removal</li>
-<li>Image sharpening</li>
-<li>Illumination normalization</li>
-<li>Perspective correction</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Mid-level process<ul>
-<li>Takes the preprocessed image to output some kind of representation of the image.</li>
-</ul>
-</li>
-<li>High-level process<ul>
-<li>Takes this vector of numbers (usually called attributes) and outputs the final result.<ul>
-<li>Face recognition</li>
-<li>Emotion recognition</li>
-<li>Remote heart rate measurement from the face<span id="more"></span>
-<h2 id="Pixels-and-colors"><a href="#Pixels-and-colors" class="headerlink" title="Pixels and colors"></a>Pixels and colors</h2></li>
-</ul>
-</li>
-</ul>
-</li>
+        <h1 id="Pixels-and-colors"><a href="#Pixels-and-colors" class="headerlink" title="Pixels and colors"></a>Pixels and colors</h1><ul>
 <li>The pixel can be considered as function containing the x and y coordinates.</li>
 <li>The function outputs a color represented by a <strong>8-bit number(0-255)</strong>.</li>
 <li>The RGB model indicates three “channels” and each channel indicates a color.</li>
@@ -274,10 +250,10 @@
 <li>How many pixels along the width(inches) or height(inches).</li>
 </ul>
 </li>
-<li>The (0,0) of an image in OpenCV is at the <strong>upper left corner</strong>.<h2 id="Access-and-manipulate-pixes-in-OpenCV"><a href="#Access-and-manipulate-pixes-in-OpenCV" class="headerlink" title="Access and manipulate pixes in OpenCV"></a>Access and manipulate pixes in OpenCV</h2><ul>
-<li>cv.imread()</li>
-</ul>
-</li>
+<li>The (0,0) of an image in OpenCV is at the <strong>upper left corner</strong>.<h1 id="Image-processing"><a href="#Image-processing" class="headerlink" title="Image processing"></a>Image processing</h1></li>
+<li><strong>Paddings</strong> are very useful when some of the letters or digits are too big to find contours.</li>
+<li><strong>Erosion</strong> is useful to remove noises.</li>
+<li><strong>Image moment</strong> is a certain particular weighted average (moment) of the image pixels’ intensities, or a function of such moments, usually chosen to have some attractive property or interpretation.<span id="more"></span></li>
 </ul>
 
     </div>
@@ -364,7 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Basics"><span class="nav-number">1.</span> <span class="nav-text">Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-processing-steps"><span class="nav-number">1.1.</span> <span class="nav-text">Image processing steps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pixels-and-colors"><span class="nav-number">1.2.</span> <span class="nav-text">Pixels and colors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-and-manipulate-pixes-in-OpenCV"><span class="nav-number">1.3.</span> <span class="nav-text">Access and manipulate pixes in OpenCV</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Pixels-and-colors"><span class="nav-number">1.</span> <span class="nav-text">Pixels and colors</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Image-processing"><span class="nav-number">2.</span> <span class="nav-text">Image processing</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -378,7 +354,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -391,7 +367,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
