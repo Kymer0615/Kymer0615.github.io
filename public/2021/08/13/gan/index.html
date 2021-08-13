@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh/hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kymer0615.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Training Generator G Create some high dimensional object that can fool the discriminator   Discriminator D Criticize the the outputs form the Generator   Data distribution pdata Noise distribution pz">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Generative Adversarial Network">
+<meta property="og:url" content="https://kymer0615.github.io/2021/08/13/gan/index.html">
+<meta property="og:site_name" content="Cyber Ghetto">
+<meta property="og:description" content="Training Generator G Create some high dimensional object that can fool the discriminator   Discriminator D Criticize the the outputs form the Generator   Data distribution pdata Noise distribution pz">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.ibb.co/T4znTys/1281628836217-pic-hd.png">
+<meta property="og:image" content="https://i.ibb.co/r387w8X/1291628837087-pic-hd.png">
+<meta property="og:image" content="https://i.ibb.co/L80qrhd/1301628837959-pic-hd.png">
+<meta property="og:image" content="https://i.ibb.co/BfvYK1C/1321628838935-pic-hd.png">
+<meta property="og:image" content="https://i.ibb.co/NmyCybD/1331628840072-pic-hd.png">
+<meta property="og:image" content="https://i.ibb.co/89FkKtF/1341628841128-pic-hd.png">
+<meta property="article:published_time" content="2021-08-13T06:17:55.000Z">
+<meta property="article:modified_time" content="2021-08-13T08:01:59.716Z">
+<meta property="article:author" content="Kymer">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="ML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.ibb.co/T4znTys/1281628836217-pic-hd.png">
+
+<link rel="canonical" href="https://kymer0615.github.io/2021/08/13/gan/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh/hans'
+  };
+</script>
+
+  <title>Generative Adversarial Network | Cyber Ghetto</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Cyber Ghetto</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
+    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/13/gan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kymer">
+      <meta itemprop="description" content="If you know, you know.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cyber Ghetto">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Generative Adversarial Network
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-08-13 14:17:55 / Modified: 16:01:59" itemprop="dateCreated datePublished" datetime="2021-08-13T14:17:55+08:00">2021-08-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/13/gan/" class="post-meta-item leancloud_visitors" data-flag-title="Generative Adversarial Network" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/08/13/gan/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/13/gan/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h1><ul>
+<li>Generator <strong>G</strong><ul>
+<li>Create some high dimensional object that can fool the discriminator</li>
+</ul>
+</li>
+<li>Discriminator <strong>D</strong><ul>
+<li>Criticize the the outputs form the Generator</li>
+</ul>
+</li>
+<li>Data distribution <strong>p<sub>data</sub></strong></li>
+<li>Noise distribution <strong>p<sub>z</sub></strong><ul>
+<li>Relatively low dimensional space<br><a target="_blank" rel="noopener" href="https://ibb.co/GWg1Jmq"><img src="https://i.ibb.co/T4znTys/1281628836217-pic-hd.png" alt="1281628836217-pic-hd" border="0"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Generator-step"><a href="#Generator-step" class="headerlink" title="Generator step:"></a>Generator step:</h2><pre><code>- Keep the weights in the discriminator 
+- Update **G** based on the loss produced by **D**
+</code></pre>
+<h2 id="Discriminator-step"><a href="#Discriminator-step" class="headerlink" title="Discriminator step:"></a>Discriminator step:</h2><pre><code>- **D** inputs a sample from **G** based on **p&lt;sub&gt;z&lt;/sub&gt;** and we want the loss to be high
+- Keep the weights in the **G**
+- **D** inputs a sample from real world example to make sure the **D** can still distinguish the real ones and fakes
+</code></pre>
+<h1 id="Applications-and-Examples"><a href="#Applications-and-Examples" class="headerlink" title="Applications and Examples"></a>Applications and Examples</h1><h2 id="Superresolution"><a href="#Superresolution" class="headerlink" title="Superresolution"></a>Superresolution</h2><p><a target="_blank" rel="noopener" href="https://ibb.co/9hK8rKd"><img src="https://i.ibb.co/r387w8X/1291628837087-pic-hd.png" alt="1291628837087-pic-hd" border="0"></a></p>
+<ul>
+<li>PSNR (the metric on the left)<ul>
+<li>Peak signal to noise ratio</li>
+</ul>
+</li>
+<li>SSIM (the metric on the right)<ul>
+<li>An image quality reference (High number if the sample image match with the reference image in a “perceptual sense”).</li>
+</ul>
+</li>
+<li>The GAN produced image has sharper details but those details are <strong>completely different</strong> from the original ones even they look reasonable.<ul>
+<li>Pros<ul>
+<li>Creating plausible results</li>
+<li>Images with high qualities</li>
+</ul>
+</li>
+<li>Cons <ul>
+<li>Not accurate</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Relative work<ul>
+<li>ESRGAN(Extended superresolution GAN)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Image-to-Image-Translation-aka-pixel-to-pixel-Isola-et-al-2016"><a href="#Image-to-Image-Translation-aka-pixel-to-pixel-Isola-et-al-2016" class="headerlink" title="Image to Image Translation(aka pixel to pixel) (Isola et al, 2016)"></a>Image to Image Translation(aka pixel to pixel) (Isola et al, 2016)</h2><p><a target="_blank" rel="noopener" href="https://ibb.co/mGRY0F5"><img src="https://i.ibb.co/L80qrhd/1301628837959-pic-hd.png" alt="1301628837959-pic-hd" border="0"></a></p>
+<ul>
+<li>Use <strong>paired images to train</strong> the model and the outputs are completely different from the ground truth.<h2 id="Unparied-image-Translation-Zhu-et-al-2017"><a href="#Unparied-image-Translation-Zhu-et-al-2017" class="headerlink" title="Unparied image Translation (Zhu et al, 2017)"></a>Unparied image Translation (Zhu et al, 2017)</h2><a target="_blank" rel="noopener" href="https://ibb.co/x2wr847"><img src="https://i.ibb.co/BfvYK1C/1321628838935-pic-hd.png" alt="1321628838935-pic-hd" border="0"></a></li>
+<li>In the first pair of images, the zebras are replaced by the horses and the other parts of the image remain the same. This is not possible to find paired images to train and achieve such goals.</li>
+<li>CycleGAN<ul>
+<li>Have a collection of zebras and a collection of horses; then train the model to be able to map horse pictures to zebra pictures and vise versa</li>
+<li>Include two sets of GANS<ol>
+<li>Mapping from zebras to horse</li>
+<li>Mapping from horse to zebras</li>
+</ol>
+</li>
+<li>Apply the <strong>cycle consistency loss</strong><ul>
+<li>zebra image -&gt; horse image -&gt; zebra image</li>
+<li>The two zebra images are close in pixelwise sense</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h1><h2 id="Inception-Score"><a href="#Inception-Score" class="headerlink" title="Inception Score"></a>Inception Score</h2><p>$$<br>\operatorname{IS}(G)=\exp \left(E_{x \sim p a} D_{K L}(p(y \mid x) | p(y))\right)<br>$$</p>
+<ul>
+<li>It is for general use cases unlike SSIM.</li>
+<li>Backbone of Inception Score is a pre-trined classifier called the <strong>Inception Network</strong>.</li>
+<li><strong>p(y|x)</strong> is the Inception’s likelihood that image <strong>x</strong> is class <strong>y</strong>. Expectation is taken over data distribution, which is estimated by a large minibatch.</li>
+<li><strong>D<sub>KL</sub></strong> is the KL divergence that captures the differences between different distributions.<br><a target="_blank" rel="noopener" href="https://ibb.co/CMH8HDC"><img src="https://i.ibb.co/NmyCybD/1331628840072-pic-hd.png" alt="1331628840072-pic-hd" border="0"></a></li>
+<li>We want individual scores to be high when the samples have the same label and similar scores when the samples are different.</li>
+<li><strong>Trade-off between the individual image quality and diversity</strong></li>
+</ul>
+<h2 id="Frechet-Inception-Distance"><a href="#Frechet-Inception-Distance" class="headerlink" title="Frechet Inception Distance"></a>Frechet Inception Distance</h2><p>$$<br>d^{2}\left((\boldsymbol{m}, \boldsymbol{C}),\left(\boldsymbol{m}<em>{w}, \boldsymbol{C}</em>{w}\right)\right)=\left|\boldsymbol{m}-\boldsymbol{m}<em>{w}\right|</em>{2}^{2}+\mathbf{T r}\left(\boldsymbol{C}+\boldsymbol{C}<em>{w}-2\left(\boldsymbol{C} \boldsymbol{C}</em>{w}\right)^{1 / 2}\right)<br>$$</p>
+<ul>
+<li>FID compares the distribution of generated images with the distribution of real images that were used to train the generator.</li>
+<li><strong>m</strong> is a vector of mean Inception activations</li>
+<li><strong>C</strong> is a covariance matrix of Inception activations</li>
+<li><strong>Tr(.)</strong> is the trace of the matrix <h1 id="Self-attention-GAN-Han-Zhang-Lan-Goodfellow-Dimitris-Metaxas-Augustus-Odena"><a href="#Self-attention-GAN-Han-Zhang-Lan-Goodfellow-Dimitris-Metaxas-Augustus-Odena" class="headerlink" title="Self-attention GAN (Han Zhang, Lan Goodfellow, Dimitris Metaxas, Augustus Odena)"></a>Self-attention GAN (Han Zhang, Lan Goodfellow, Dimitris Metaxas, Augustus Odena)</h1></li>
+<li>Huge improvements of the performance<br><a target="_blank" rel="noopener" href="https://ibb.co/1THcvjH"><img src="https://i.ibb.co/89FkKtF/1341628841128-pic-hd.png" alt="1341628841128-pic-hd" border="0"></a><h1 id="Similar-work"><a href="#Similar-work" class="headerlink" title="Similar work"></a>Similar work</h1></li>
+<li>VAE</li>
+<li>Autoregressive</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/ML/" rel="tag"># ML</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/13/command/" rel="prev" title="Frequently used commands">
+      <i class="fa fa-chevron-left"></i> Frequently used commands
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Training"><span class="nav-number">1.</span> <span class="nav-text">Training</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Generator-step"><span class="nav-number">1.1.</span> <span class="nav-text">Generator step:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Discriminator-step"><span class="nav-number">1.2.</span> <span class="nav-text">Discriminator step:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Applications-and-Examples"><span class="nav-number">2.</span> <span class="nav-text">Applications and Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Superresolution"><span class="nav-number">2.1.</span> <span class="nav-text">Superresolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-to-Image-Translation-aka-pixel-to-pixel-Isola-et-al-2016"><span class="nav-number">2.2.</span> <span class="nav-text">Image to Image Translation(aka pixel to pixel) (Isola et al, 2016)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unparied-image-Translation-Zhu-et-al-2017"><span class="nav-number">2.3.</span> <span class="nav-text">Unparied image Translation (Zhu et al, 2017)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Metrics"><span class="nav-number">3.</span> <span class="nav-text">Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Inception-Score"><span class="nav-number">3.1.</span> <span class="nav-text">Inception Score</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frechet-Inception-Distance"><span class="nav-number">3.2.</span> <span class="nav-text">Frechet Inception Distance</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Self-attention-GAN-Han-Zhang-Lan-Goodfellow-Dimitris-Metaxas-Augustus-Odena"><span class="nav-number">4.</span> <span class="nav-text">Self-attention GAN (Han Zhang, Lan Goodfellow, Dimitris Metaxas, Augustus Odena)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Similar-work"><span class="nav-number">5.</span> <span class="nav-text">Similar work</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Kymer</p>
+  <div class="site-description" itemprop="description">If you know, you know.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Kymer0615" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Kymer0615" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/Kymer_444" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;Kymer_444" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kymer</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'jMzJ2pEXPe5P1IImhArwDeVx-gzGzoHsz',
+      appKey     : 'wm9DBHKSYjaSTtsWfDM5xFbD',
+      placeholder: "Leave a comment ;)",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

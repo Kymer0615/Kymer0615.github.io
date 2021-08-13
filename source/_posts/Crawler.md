@@ -24,6 +24,11 @@ categories: 编程 Programming
     2. 控制访问的速率特别是异步的情况
     3. 使用IP池
     
-    
+# Issues
+- 国标网站抓取
+    - 对于国标网站进行抓取时,Requests库中的session无法自动传递Cookie
+        - 使用r.request.prepare_cookies(r.cookies)来传递
+    - 下载附件时需要验证码
+        - 使用CNN来训练模型,训练正确率可达99%,满足实际使用
 
 

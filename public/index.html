@@ -163,6 +163,699 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
+    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/13/gan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kymer">
+      <meta itemprop="description" content="If you know, you know.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cyber Ghetto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/13/gan/" class="post-title-link" itemprop="url">Generative Adversarial Network</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-08-13 14:17:55 / Modified: 16:01:59" itemprop="dateCreated datePublished" datetime="2021-08-13T14:17:55+08:00">2021-08-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/13/gan/" class="post-meta-item leancloud_visitors" data-flag-title="Generative Adversarial Network" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/08/13/gan/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/13/gan/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h1><ul>
+<li>Generator <strong>G</strong><ul>
+<li>Create some high dimensional object that can fool the discriminator</li>
+</ul>
+</li>
+<li>Discriminator <strong>D</strong><ul>
+<li>Criticize the the outputs form the Generator</li>
+</ul>
+</li>
+<li>Data distribution <strong>p<sub>data</sub></strong></li>
+<li>Noise distribution <strong>p<sub>z</sub></strong><ul>
+<li>Relatively low dimensional space<br><a target="_blank" rel="noopener" href="https://ibb.co/GWg1Jmq"><img src="https://i.ibb.co/T4znTys/1281628836217-pic-hd.png" alt="1281628836217-pic-hd" border="0"></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Generator-step"><a href="#Generator-step" class="headerlink" title="Generator step:"></a>Generator step:</h2><pre><code>- Keep the weights in the discriminator 
+- Update **G** based on the loss produced by **D**
+</code></pre>
+<h2 id="Discriminator-step"><a href="#Discriminator-step" class="headerlink" title="Discriminator step:"></a>Discriminator step:</h2><pre><code>- **D** inputs a sample from **G** based on **p&lt;sub&gt;z&lt;/sub&gt;** and we want the loss to be high
+- Keep the weights in the **G**
+- **D** inputs a sample from real world example to make sure the **D** can still distinguish the real ones and fakes
+</code></pre>
+<h1 id="Applications-and-Examples"><a href="#Applications-and-Examples" class="headerlink" title="Applications and Examples"></a>Applications and Examples</h1><h2 id="Superresolution"><a href="#Superresolution" class="headerlink" title="Superresolution"></a>Superresolution</h2><p><a target="_blank" rel="noopener" href="https://ibb.co/9hK8rKd"><img src="https://i.ibb.co/r387w8X/1291628837087-pic-hd.png" alt="1291628837087-pic-hd" border="0"></a></p>
+<ul>
+<li>PSNR (the metric on the left)<ul>
+<li>Peak signal to noise ratio</li>
+</ul>
+</li>
+<li>SSIM (the metric on the right)<ul>
+<li>An image quality reference (High number if the sample image match with the reference image in a “perceptual sense”).</li>
+</ul>
+</li>
+<li>The GAN produced image has sharper details but those details are <strong>completely different</strong> from the original ones even they look reasonable.<ul>
+<li>Pros<ul>
+<li>Creating plausible results</li>
+<li>Images with high qualities</li>
+</ul>
+</li>
+<li>Cons <ul>
+<li>Not accurate</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Relative work<ul>
+<li>ESRGAN(Extended superresolution GAN)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Image-to-Image-Translation-aka-pixel-to-pixel-Isola-et-al-2016"><a href="#Image-to-Image-Translation-aka-pixel-to-pixel-Isola-et-al-2016" class="headerlink" title="Image to Image Translation(aka pixel to pixel) (Isola et al, 2016)"></a>Image to Image Translation(aka pixel to pixel) (Isola et al, 2016)</h2><p><a target="_blank" rel="noopener" href="https://ibb.co/mGRY0F5"><img src="https://i.ibb.co/L80qrhd/1301628837959-pic-hd.png" alt="1301628837959-pic-hd" border="0"></a></p>
+<ul>
+<li>Use <strong>paired images to train</strong> the model and the outputs are completely different from the ground truth.<h2 id="Unparied-image-Translation-Zhu-et-al-2017"><a href="#Unparied-image-Translation-Zhu-et-al-2017" class="headerlink" title="Unparied image Translation (Zhu et al, 2017)"></a>Unparied image Translation (Zhu et al, 2017)</h2><a target="_blank" rel="noopener" href="https://ibb.co/x2wr847"><img src="https://i.ibb.co/BfvYK1C/1321628838935-pic-hd.png" alt="1321628838935-pic-hd" border="0"></a></li>
+<li>In the first pair of images, the zebras are replaced by the horses and the other parts of the image remain the same. This is not possible to find paired images to train and achieve such goals.</li>
+<li>CycleGAN<ul>
+<li>Have a collection of zebras and a collection of horses; then train the model to be able to map horse pictures to zebra pictures and vise versa</li>
+<li>Include two sets of GANS<ol>
+<li>Mapping from zebras to horse</li>
+<li>Mapping from horse to zebras</li>
+</ol>
+</li>
+<li>Apply the <strong>cycle consistency loss</strong><ul>
+<li>zebra image -&gt; horse image -&gt; zebra image</li>
+<li>The two zebra images are close in pixelwise sense</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h1><h2 id="Inception-Score"><a href="#Inception-Score" class="headerlink" title="Inception Score"></a>Inception Score</h2><p>$$<br>\operatorname{IS}(G)=\exp \left(E_{x \sim p a} D_{K L}(p(y \mid x) | p(y))\right)<br>$$</p>
+<ul>
+<li>It is for general use cases unlike SSIM.</li>
+<li>Backbone of Inception Score is a pre-trined classifier called the <strong>Inception Network</strong>.</li>
+<li><strong>p(y|x)</strong> is the Inception’s likelihood that image <strong>x</strong> is class <strong>y</strong>. Expectation is taken over data distribution, which is estimated by a large minibatch.</li>
+<li><strong>D<sub>KL</sub></strong> is the KL divergence that captures the differences between different distributions.<br><a target="_blank" rel="noopener" href="https://ibb.co/CMH8HDC"><img src="https://i.ibb.co/NmyCybD/1331628840072-pic-hd.png" alt="1331628840072-pic-hd" border="0"></a></li>
+<li>We want individual scores to be high when the samples have the same label and similar scores when the samples are different.</li>
+<li><strong>Trade-off between the individual image quality and diversity</strong></li>
+</ul>
+<h2 id="Frechet-Inception-Distance"><a href="#Frechet-Inception-Distance" class="headerlink" title="Frechet Inception Distance"></a>Frechet Inception Distance</h2><p>$$<br>d^{2}\left((\boldsymbol{m}, \boldsymbol{C}),\left(\boldsymbol{m}<em>{w}, \boldsymbol{C}</em>{w}\right)\right)=\left|\boldsymbol{m}-\boldsymbol{m}<em>{w}\right|</em>{2}^{2}+\mathbf{T r}\left(\boldsymbol{C}+\boldsymbol{C}<em>{w}-2\left(\boldsymbol{C} \boldsymbol{C}</em>{w}\right)^{1 / 2}\right)<br>$$</p>
+<ul>
+<li>FID compares the distribution of generated images with the distribution of real images that were used to train the generator.</li>
+<li><strong>m</strong> is a vector of mean Inception activations</li>
+<li><strong>C</strong> is a covariance matrix of Inception activations</li>
+<li><strong>Tr(.)</strong> is the trace of the matrix <h1 id="Self-attention-GAN-Han-Zhang-Lan-Goodfellow-Dimitris-Metaxas-Augustus-Odena"><a href="#Self-attention-GAN-Han-Zhang-Lan-Goodfellow-Dimitris-Metaxas-Augustus-Odena" class="headerlink" title="Self-attention GAN (Han Zhang, Lan Goodfellow, Dimitris Metaxas, Augustus Odena)"></a>Self-attention GAN (Han Zhang, Lan Goodfellow, Dimitris Metaxas, Augustus Odena)</h1></li>
+<li>Huge improvements of the performance<br><a target="_blank" rel="noopener" href="https://ibb.co/1THcvjH"><img src="https://i.ibb.co/89FkKtF/1341628841128-pic-hd.png" alt="1341628841128-pic-hd" border="0"></a><h1 id="Similar-work"><a href="#Similar-work" class="headerlink" title="Similar work"></a>Similar work</h1></li>
+<li>VAE</li>
+<li>Autoregressive</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
+    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/13/command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kymer">
+      <meta itemprop="description" content="If you know, you know.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cyber Ghetto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/13/command/" class="post-title-link" itemprop="url">Frequently used commands</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-08-13 11:18:53 / Modified: 11:29:04" itemprop="dateCreated datePublished" datetime="2021-08-13T11:18:53+08:00">2021-08-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/13/command/" class="post-meta-item leancloud_visitors" data-flag-title="Frequently used commands" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/08/13/command/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/13/command/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="General"><a href="#General" class="headerlink" title="General"></a>General</h1><ul>
+<li>The z-shell file<ul>
+<li>~/.zshrc</li>
+</ul>
+</li>
+<li>Set environment variable<ul>
+<li>alias python=python2
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/13/command/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
+    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/06/ByTheRiver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kymer">
+      <meta itemprop="description" content="If you know, you know.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cyber Ghetto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/06/ByTheRiver/" class="post-title-link" itemprop="url">By the river</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-08-06 21:02:58 / Modified: 22:52:04" itemprop="dateCreated datePublished" datetime="2021-08-06T21:02:58+08:00">2021-08-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B6%82%E9%B8%A6-Graffiti/" itemprop="url" rel="index"><span itemprop="name">涂鸦 Graffiti</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/06/ByTheRiver/" class="post-meta-item leancloud_visitors" data-flag-title="By the river" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/08/06/ByTheRiver/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/06/ByTheRiver/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>WE NEED PLACES THAT CAN BE SEEN BY THE PUBLIC AND OTHER WRITERS; These stairs by the river are just perfect – we could spend as much time as we want to decide which colors would be the fill-in, outline, etc.<br>Normally, after the bombing, we would use the left over cans to do these PLUS straight letters. Clearly we did not have many colors to choose from but it made it more interesting.<br><a target="_blank" rel="noopener" href="https://ibb.co/zrZCqhJ"><img src="https://i.ibb.co/FKzcRbV/IMG-9048.jpg" alt="IMG-9048" border="0"></a></p>
+<ul>
+<li>One of first PLUS straight letters by the river⬆.
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/06/ByTheRiver/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
+    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/03/python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kymer">
+      <meta itemprop="description" content="If you know, you know.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cyber Ghetto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/03/python/" class="post-title-link" itemprop="url">Python</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-03 10:54:51" itemprop="dateCreated datePublished" datetime="2021-08-03T10:54:51+08:00">2021-08-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-10 10:35:53" itemprop="dateModified" datetime="2021-08-10T10:35:53+08:00">2021-08-10</time>
+              </span>
+
+          
+            <span id="/2021/08/03/python/" class="post-meta-item leancloud_visitors" data-flag-title="Python" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/08/03/python/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/03/python/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>eval and exec<ul>
+<li>eval 参数字段内不能赋值</li>
+<li>exec 参数字段内赋值很可能会跨域</li>
+</ul>
+</li>
+<li><strong>is</strong> VS <strong>==</strong><ul>
+<li>is 比较两个对象的 id 值是否相等，是否指向同一个内存地址</li>
+<li>== 比较的是两个对象的内容是否相等，值是否相等</li>
+<li>小整数对象[-5,256]在全局解释器范围内被放入缓存供重复使用</li>
+<li>is 运算符比 == 效率高，在变量和None进行比较时，应该使用 is
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/03/python/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
+    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/01/Pytorch%20CAPTCHA%20Validation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kymer">
+      <meta itemprop="description" content="If you know, you know.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cyber Ghetto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/01/Pytorch%20CAPTCHA%20Validation/" class="post-title-link" itemprop="url">Pytorch CAPTCHA Validation</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-01 15:15:21" itemprop="dateCreated datePublished" datetime="2021-08-01T15:15:21+08:00">2021-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-12 11:37:12" itemprop="dateModified" datetime="2021-08-12T11:37:12+08:00">2021-08-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/01/Pytorch%20CAPTCHA%20Validation/" class="post-meta-item leancloud_visitors" data-flag-title="Pytorch CAPTCHA Validation" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/08/01/Pytorch%20CAPTCHA%20Validation/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/01/Pytorch%20CAPTCHA%20Validation/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h1><p>This project is used as of a module to pass the CAPTCHA validations so that the crawler can download the desired documents. </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/01/Pytorch%20CAPTCHA%20Validation/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
+    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/07/23/CV%20study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kymer">
+      <meta itemprop="description" content="If you know, you know.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cyber Ghetto">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/23/CV%20study/" class="post-title-link" itemprop="url">Open CV study</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-23 15:15:21" itemprop="dateCreated datePublished" datetime="2021-07-23T15:15:21+08:00">2021-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-10 10:42:25" itemprop="dateModified" datetime="2021-08-10T10:42:25+08:00">2021-08-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/07/23/CV%20study/" class="post-meta-item leancloud_visitors" data-flag-title="Open CV study" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/07/23/CV%20study/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/23/CV%20study/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Pixels-and-colors"><a href="#Pixels-and-colors" class="headerlink" title="Pixels and colors"></a>Pixels and colors</h1><ul>
+<li>The pixel can be considered as function containing the x and y coordinates.</li>
+<li>The function outputs a color represented by a <strong>8-bit number(0-255)</strong>.</li>
+<li>The RGB model indicates three “channels” and each channel indicates a color.</li>
+<li><strong>PPI</strong> stands “for pixel per inch” <ul>
+<li>How many pixels along the width(inches) or height(inches).</li>
+</ul>
+</li>
+<li>The (0,0) of an image in OpenCV is at the <strong>upper left corner</strong>.<h1 id="Image-processing"><a href="#Image-processing" class="headerlink" title="Image processing"></a>Image processing</h1></li>
+<li><strong>Paddings</strong> are very useful when some of the letters or digits are too big to find contours.</li>
+<li><strong>Erosion</strong> is useful to remove noises.</li>
+<li><strong>Image moment</strong> is a certain particular weighted average (moment) of the image pixels’ intensities, or a function of such moments, usually chosen to have some attractive property or interpretation.
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/23/CV%20study/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
     <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/07/21/Crawler/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -194,7 +887,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-23 15:14:26" itemprop="dateModified" datetime="2021-07-23T15:14:26+08:00">2021-07-23</time>
+                <time title="Modified: 2021-08-13 11:29:12" itemprop="dateModified" datetime="2021-08-13T11:29:12+08:00">2021-08-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,6 +961,19 @@
 <li>控制访问的速率特别是异步的情况</li>
 <li>使用IP池</li>
 </ol>
+</li>
+</ul>
+<h1 id="Issues"><a href="#Issues" class="headerlink" title="Issues"></a>Issues</h1><ul>
+<li>国标网站抓取<ul>
+<li>对于国标网站进行抓取时,Requests库中的session无法自动传递Cookie<ul>
+<li>使用r.request.prepare_cookies(r.cookies)来传递</li>
+</ul>
+</li>
+<li>下载附件时需要验证码<ul>
+<li>使用CNN来训练模型,训练正确率可达99%,满足实际使用</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 
@@ -599,321 +1305,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/06/30/Cans/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/30/Cans/" class="post-title-link" itemprop="url">Cans</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-06-30 12:57:37" itemprop="dateCreated datePublished" datetime="2021-06-30T12:57:37+08:00">2021-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-08 11:46:20" itemprop="dateModified" datetime="2021-07-08T11:46:20+08:00">2021-07-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B6%82%E9%B8%A6-Graffiti/" itemprop="url" rel="index"><span itemprop="name">涂鸦 Graffiti</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/06/30/Cans/" class="post-meta-item leancloud_visitors" data-flag-title="Cans" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/06/30/Cans/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/30/Cans/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>We started to do more stickers and tags in different spots and on the baskets of shared bikes(yes we did that). The reason why we were doing the basket thingy was that there are just so many of them and it would not cause any conflicts with others. It can also be considered as a little experiment– will we ever meet a tagged shared bike on the street again? The answer was no and we tried.</p>
-<!-- 我们开始在各个地方写签名和贴贴纸，包括共享单车的篮子里（没错）。我们之所以要去签那些篮子是因为共享单车确实多并且你不会因此和其他人产生任何冲突。这也可以是一个小实验-- 我们会不会遇到一辆签过的车？答案是不会但我们试过了。 -->
-<p><a target="_blank" rel="noopener" href="https://ibb.co/zF0df89"><img src="https://i.ibb.co/jz1t4V0/IMG-2652.jpg" alt="IMG-2652" border="0" width="600"></a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/30/Cans/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/06/30/firstTryout/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/30/firstTryout/" class="post-title-link" itemprop="url">First Tryout</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-06-30 09:31:19" itemprop="dateCreated datePublished" datetime="2021-06-30T09:31:19+08:00">2021-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-05 10:32:51" itemprop="dateModified" datetime="2021-07-05T10:32:51+08:00">2021-07-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B6%82%E9%B8%A6-Graffiti/" itemprop="url" rel="index"><span itemprop="name">涂鸦 Graffiti</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/06/30/firstTryout/" class="post-meta-item leancloud_visitors" data-flag-title="First Tryout" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/06/30/firstTryout/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/30/firstTryout/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://ibb.co/nj3s591"><img align="up" src="https://i.ibb.co/1Tsfw1X/IMG-2173.jpg" alt="IMG-2173" border="1000" width="400"></a><br>This photo was taken in <strong>15 May 2020 at 17:42:00</strong> while I and Gab were waiting for our friend Rabbit, to pick up some sandwiches outside of a mall. By the time, we already had the idea to do graffiti because we found so many T-ups and tags in the town when we were hanging around the city during night times. </p>
-<!-- 这张照片拍摄于**2020年五月十五号17:42:00**，当时我和Gab正在一家商场外面等Rabbit带给我们的三明治。因为我们晚上在城里瞎逛的时候看到了许多T-ups和tags，所以当时我们已经有玩涂鸦的想法了。 -->
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/30/firstTryout/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/06/29/Scrapy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/29/Scrapy/" class="post-title-link" itemprop="url">Scrapy study</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-06-29 16:21:55" itemprop="dateCreated datePublished" datetime="2021-06-29T16:21:55+08:00">2021-06-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-01 09:51:41" itemprop="dateModified" datetime="2021-07-01T09:51:41+08:00">2021-07-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/06/29/Scrapy/" class="post-meta-item leancloud_visitors" data-flag-title="Scrapy study" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/06/29/Scrapy/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/29/Scrapy/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="简单的实例"><a href="#简单的实例" class="headerlink" title="简单的实例"></a>简单的实例</h1><h2 id="开始项目"><a href="#开始项目" class="headerlink" title="开始项目"></a>开始项目</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ul>
-<li>Syntax: <strong>scrapy startproject <project_name> [project_dir]</strong></li>
-</ul>
-<h3 id="添加新spider"><a href="#添加新spider" class="headerlink" title="添加新spider"></a>添加新spider</h3><ul>
-<li>Syntax: <strong>scrapy genspider [-t template] <name> <domain></strong>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/29/Scrapy/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
 
 
 
@@ -978,7 +1374,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -991,11 +1387,19 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Kymer0615" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Kymer0615" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/Kymer_444" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;Kymer_444" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
 
 
 
