@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://i.ibb.co/NmyCybD/1331628840072-pic-hd.png">
 <meta property="og:image" content="https://i.ibb.co/89FkKtF/1341628841128-pic-hd.png">
 <meta property="article:published_time" content="2021-08-13T06:17:55.000Z">
-<meta property="article:modified_time" content="2021-08-13T08:22:31.980Z">
+<meta property="article:modified_time" content="2021-08-13T08:33:23.887Z">
 <meta property="article:author" content="Kymer">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="ML">
@@ -199,7 +199,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-13 14:17:55 / Modified: 16:22:31" itemprop="dateCreated datePublished" datetime="2021-08-13T14:17:55+08:00">2021-08-13</time>
+              <time title="Created: 2021-08-13 14:17:55 / Modified: 16:33:23" itemprop="dateCreated datePublished" datetime="2021-08-13T14:17:55+08:00">2021-08-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,11 +243,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <script src="//yihui.org/js/math-code.js"></script>
-<!-- Just one possible MathJax CDN below. You may use others. -->
-<script async
+        <p><script src="//yihui.org/js/math-code.js"></script><br><!-- Just one possible MathJax CDN below. You may use others. --></p>
+<p><script async
   src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+</script></p>
 <h1 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h1><ul>
 <li>Generator <strong>G</strong><ul>
 <li>Create some high dimensional object that can fool the discriminator</li>
@@ -314,8 +313,8 @@
 </ul>
 </li>
 </ul>
-<h1 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h1><h2 id="Inception-Score"><a href="#Inception-Score" class="headerlink" title="Inception Score"></a>Inception Score</h2><p>$$<br>\operatorname{IS}(G)=\exp \left(E_{x \sim p a} D_{K L}(p(y \mid x) | p(y))\right)<br>$$</p>
-<ul>
+<h1 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h1><h2 id="Inception-Score"><a href="#Inception-Score" class="headerlink" title="Inception Score"></a>Inception Score</h2><script type="math/tex; mode=display">
+\operatorname{IS}(G)=\exp \left(E_{x \sim p a} D_{K L}(p(y \mid x) \| p(y))\right)</script><ul>
 <li>It is for general use cases unlike SSIM.</li>
 <li>Backbone of Inception Score is a pre-trined classifier called the <strong>Inception Network</strong>.</li>
 <li><strong>p(y|x)</strong> is the Inception’s likelihood that image <strong>x</strong> is class <strong>y</strong>. Expectation is taken over data distribution, which is estimated by a large minibatch.</li>
@@ -323,8 +322,8 @@
 <li>We want individual scores to be high when the samples have the same label and similar scores when the samples are different.</li>
 <li><strong>Trade-off between the individual image quality and diversity</strong></li>
 </ul>
-<h2 id="Frechet-Inception-Distance"><a href="#Frechet-Inception-Distance" class="headerlink" title="Frechet Inception Distance"></a>Frechet Inception Distance</h2><p>$$<br>d^{2}\left((\boldsymbol{m}, \boldsymbol{C}),\left(\boldsymbol{m}<em>{w}, \boldsymbol{C}</em>{w}\right)\right)=\left|\boldsymbol{m}-\boldsymbol{m}<em>{w}\right|</em>{2}^{2}+\mathbf{T r}\left(\boldsymbol{C}+\boldsymbol{C}<em>{w}-2\left(\boldsymbol{C} \boldsymbol{C}</em>{w}\right)^{1 / 2}\right)<br>$$</p>
-<ul>
+<h2 id="Frechet-Inception-Distance"><a href="#Frechet-Inception-Distance" class="headerlink" title="Frechet Inception Distance"></a>Frechet Inception Distance</h2><script type="math/tex; mode=display">
+d^{2}\left((\boldsymbol{m}, \boldsymbol{C}),\left(\boldsymbol{m}_{w}, \boldsymbol{C}_{w}\right)\right)=\left\|\boldsymbol{m}-\boldsymbol{m}_{w}\right\|_{2}^{2}+\mathbf{T r}\left(\boldsymbol{C}+\boldsymbol{C}_{w}-2\left(\boldsymbol{C} \boldsymbol{C}_{w}\right)^{1 / 2}\right)</script><ul>
 <li>FID compares the distribution of generated images with the distribution of real images that were used to train the generator.</li>
 <li><strong>m</strong> is a vector of mean Inception activations</li>
 <li><strong>C</strong> is a covariance matrix of Inception activations</li>
@@ -562,6 +561,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
