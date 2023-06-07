@@ -1,0 +1,262 @@
+<p>COMP0113 Individual Coursework</p>
+<p>ZIYANG CHEN April 2023</p>
+<p>Contents</p>
+<p><a href="#_page0_x45.64_y431.99">1 Introduction</a> 1 <a href="#_page1_x45.64_y299.69">2 Related work</a> 2</p>
+<ol>
+<li><a href="#_page1_x45.64_y442.99">Optics design </a>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2</li>
+<li><a href="#_page1_x45.64_y463.76">Overview </a>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2</li>
+<li><a href="#_page1_x45.64_y541.59">Fixed focus SLM design </a>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2</li>
+<li><a href="#_page5_x45.64_y48.76">Varifocal occlusion-capable AR .</a> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6</li>
+<li><a href="#_page5_x45.64_y542.80">Occlusion mask alternative .</a> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6</li>
+<li><a href="#_page5_x45.64_y708.57">Depth-based occlusion </a>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6</li>
+<li><a href="#_page5_x45.64_y728.78">Overview </a>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6</li>
+<li><a href="#_page6_x45.64_y375.54">Stereo cameras </a>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7</li>
+<li><a href="#_page6_x45.64_y491.55">Time-of-flight camera </a>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7</li>
+<li><a href="#_page7_x45.64_y282.70">DNN-based occlusion-capable AR . </a>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8</li>
+<li><a href="#_page7_x45.64_y305.41">Overview </a>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8</li>
+<li><a href="#_page7_x45.64_y383.23">Grabbing scenario </a>. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8</li>
+<li><a href="#_page7_x45.64_y630.36">Assembly line scenario .</a> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8</li>
+</ol>
+<p><a href="#_page8_x45.64_y379.06">3 Conclusion</a> 9</p>
+<p>1  Introduction</p>
+<p><a name="_page0_x45.64_y431.99"></a>This essay focuses on the question ”Does the most recent research on optical see-through AR glasses give a viable path to proper occlusion of the real world?”. It is necessary to first reveal the occlusion problem in the AR (aug- mented reality) context.</p>
+<p>First of all, optical see-through AR devices provides a direct view of the real world through an optical combiner and thus has minimal affects to the view of the real world. It is highly preferred in demanding applications where a user’s awareness to the live environment is paramount[5][<a href="#_page10_x45.64_y194.61">19</a>]<a href="#_page10_x45.64_y656.33">. Suc</a>h device should merge virtual and real-life objects into a scene seamlessly which means proper occlusions should happen otherwise the feelings of the presence would be ruined. According to <a href="#_page10_x45.64_y617.03">[18], </a>there are three significant occlusion situations: an occlusion only between real objects, an occlusion between real and virtual objects, or an occlusion only between virtual objects. However, the problem of occlusion in AR involves occlusion between real and virtual objects (the ”ghost” image without occlusion is shown in Figure<a href="#_page1_x45.64_y42.78">1a </a>and the ideal occlusion is shown in Figure1b<a href="#_page1_x45.64_y42.78">).</a></p>
+<p>Secondly, due to the brightness limits of our current microdisplays (e.g OLED and LCD), the virtual objects in front of some physical objects tend to be semi-transparent (in Figure1a) <a href="#_page1_x45.64_y42.78">whic</a>h is not desirable for an immersive AR experience. Proper occlusions or blocking of the lights that are reflected from the physical object would enhance the perceived quality, especially in outdoor situations.</p>
+<p>This type of occlusion problem had been partially solved as early as 2003 when the authors in [11] <a href="#_page10_x45.64_y397.85">prop</a>osed a wearable AR device ELMO-4 (Enhanced see-through display using an LCD panel for Mutual Occlusion in Figure3) that is capable to combine the depth and registration information to perform collaborative AR games (Figure4). Nowadays, we have consumer AR glasses manufacturers like Nreal, Rokid, and Microsoft who have released a wide range of products but most of them do not provide fully seamless and accurate occlusions. The reason behind it can be divided into two major aspects: hardware and software which will be discussed in the following sections.</p>
+<p>1</p>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.001.png" alt=""></p>
+<p>1) Concept<a name="_page1_x45.64_y42.78"></a> of occlusion illustrated with a virtual apple as would be seen through a beam splitter-based head- worn display<a href="#_page10_x45.64_y68.59">[1].</a></p>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.002.png" alt=""></p>
+<p>2) Concept of occlusion illustrated with a virtual apple as would be seen through an ideal occlusion based dis- play<a href="#_page10_x45.64_y68.59">[1].</a></p>
+<p>2</p>
+<p>Figure 1: Concept of occlusion</p>
+<p>2  Related<a name="_page1_x45.64_y299.69"></a> work</p>
+<p>In this section, I will evaluate the researches that have been done to address the occlusion problem. Optic see-through augmented reality devices consist of a combination of optics, sensors, and computing units that allow users to view virtual objects overlaid onto the real world, by combining both real-world and virtual light. Given this unique combination, it is important to investigate how the optics have been designed and how depth information has been gathered which is crucial for accurate occlusion to happen.</p>
+<p>With the fast development of computing units like GPUs, people can solve computer vision problems with deep neural networks. For some specific use cases, DNNs could greatly improve the accuracy of occlusion under AR. So I will also include some examples that applied DNNs to solve this problem.</p>
+<ol>
+<li>Optics<a name="_page1_x45.64_y442.99"></a> design</li>
+<li>Overview</li>
+</ol>
+<p><a name="_page1_x45.64_y463.76"></a>The most mentioned approach to blocking the real-world rays is to apply SLM (spatial light modulator that is placed at the focal plane of the objective prism controls the opaqueness of the real view[5]). <a href="#_page10_x45.64_y194.61">Therefore,</a> I will review some of the optics designs that have been raised in the past 2 decades and discuss the challenges. And then discuss the recent research in the field.</p>
+<ol>
+<li>Fixed<a name="_page1_x45.64_y541.59"></a> focus SLM design</li>
+</ol>
+<p>As mentioned earlier, the ELMO-4 was the first occlusion-capable AR device in 2003 which resolve a couple of optical problems:</p>
+<ul>
+<li>Large viewpoint offsets would cause difficulties for users to perform hand-eye coordination tasks and see partners in a collaborative task. This was addressed by putting the virtual viewpoint at the real viewpoint.</li>
+<li>Erecting image while eliminating the viewpoint offsets. The optics design is shown in Figure2</li>
+</ul>
+<p>The authors have utilized a somewhat complicated design to address the challenges, as shown in Figure2 and <a href="#_page2_x45.64_y42.78">an </a>actual photo (Figure3<a href="#_page2_x45.64_y289.66">). </a>Due to the complexity of the light path, the prototype was cumbersome. To mask real-world light, they have employed a masking LCD panel that utilizes a layer of liquid crystal material to selectively allow or block light passing through specific areas of the display screen. While this technique is effective for creating basic masks or patterns, it may face difficulties in achieving precise and intricate shapes due to constraints in the orientation and resolution of the liquid crystal layer.</p>
+<p>From this work, the key points that enable the proper occlusions to happen are:</p>
+<ul>
+<li>Masking component that is programmable and able to block the light from real-world objects.</li>
+</ul>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.003.png" alt=""></p>
+<p><a name="_page2_x45.64_y42.78"></a>Figure 2: A simplified ELMO-4 optics<a href="#_page10_x45.64_y397.85">[11].</a></p>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.004.png" alt=""></p>
+<p><a name="_page2_x45.64_y289.66"></a>Figure 3: Close-up of ELMO-4 in use<a href="#_page10_x45.64_y397.85">[11].</a></p>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.005.png" alt=""></p>
+<p><a name="_page2_x45.64_y497.40"></a>Figure 4: Images seen through ELMO-4 in the collaborative AR game. Transparent objects (left), opaque objects (center), and a bare-hand interaction (right) are shown[11].</p>
+<ul>
+<li>Depth sensors that are robust and accurate under most circumstances.</li>
+<li>Optics design that can eliminate viewpoint offsets and provide an electing image.</li>
+<li>Ensuring unit magnification of the see-through scene.</li>
+</ul>
+<p>In the next year, the authors in [1]<a href="#_page10_x45.64_y68.59"> prop</a>osed a more compact optics design that contains a reflective SLM com- bined with a single optical path as shown in Figure5. <a href="#_page3_x45.64_y206.11">This</a> optics design greatly reduces the size of the AR device</p>
+<p>and showed a couple of advantages:</p>
+<ul>
+<li>The telecentric design of the lens ensures a 90 degrees angle of incidence for the chief rays for the SLM (e.g. F-LCOS, DMD) to operate efficiently. Due to the use of DMD (Digital Micromirror Device which is an array of tiny mirrors that can be individually controlled to reflect light in different directions), this approach gives higher contrast ratio comparing the ELMO-4 which applied the LCD masking panel.</li>
+<li>The ”x-box” in the middle of the design is a combiner that brings the income chief rays and the virtual object rays together. This makes sure that the reflected rays do not have any angels which are not desirable.</li>
+<li>The optical system guarantees that the height of both the object image and the occluded image produced by the SLM remains constant, with any changes being limited to defocusing.</li>
+</ul>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.006.png" alt=""></p>
+<p><a name="_page3_x45.64_y206.11"></a>Figure 5: First order optical layout[1].</p>
+<p>In 2012, the team in <a href="#_page10_x45.64_y194.61">5[] </a>further upgraded the optics components and display to achieve better image quality and preserve the mutual occlusion property as shown in Figure6. <a href="#_page3_x45.64_y514.64">The</a> authors applied multiple freeform optics including DOE (Diffractive optical element plates were employed to correct chromatic aberrations for the virtual viewing path and the see-through path<a href="#_page10_x45.64_y194.61">5[]) </a>and liquid crystal on silicon (LCoS) type of SLM to address the problem.</p>
+<p>Similar approaches like the above two applied the reflective SLMs. This type of SLM removes diffractive artifacts but, inevitably, requires more dedicated optic components (e.g. x-cube prism and freeform lenses) and other devices like polarizing beam splitters<a href="#_page10_x45.64_y358.00">[10] </a>and paired ellipsoidal mirrors[24]<a href="#_page11_x45.64_y48.76"> whic</a>h increase the form factor of the overall device.</p>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.007.png" alt=""></p>
+<p><a name="_page3_x45.64_y514.64"></a>Figure 6: Optical layout<a href="#_page10_x45.64_y194.61">5[].</a></p>
+<p>This year, Zhang et al. provided an add-on device on the Hololens 1 (an optical see-through wearable AR device) to achieve occlusion<a href="#_page10_x45.64_y744.00">[23].</a> By utilizing a mirror (M1-3) and a quarter wave plate ((QWP1-2)) in combination, the polarization of the light can be switched between the s-direction (represented by blue arrows) and p-direction (represented by orange arrows). This allows the transmitted propagation light from a polarizing beam splitter (PBS) to be reflected back at the same PBS surface after being guided backward by the mirror attached to a QWP, and vice versa. As a result, the cubic space occupied by PBS2 in part I can be utilized repeatedly to achieve an optical path four times the length, resulting in a highly compact system layout which is shown in the first part of the Figure7 [23]. The second part is then used to eliminate viewpoint offset as mentioned earlier in the ELMO-4. The authors used Unity with Mixed Reality Toolkit (MRTK) SDKs to render the corresponding occlusion mask and the virtual objects with color correction and system calibration. This complete work allows applications like texture replacement or enhanced semi-transparent displays possible. However, the authors also mentioned some problems with the existing work:</p>
+<ul>
+<li>Small field of view (FOV) compared to other optical see-through AR devices due to the chosen eye relief.</li>
+<li>The prototype exhibits color aberration due to reduced transparency resulting from partial polarization of visible light passing through the quarter wave plates designed for a single wavelength.</li>
+<li>High system latency due to the processing of the streamed virtual image. The time of processing is roughly<ul>
+<li>seconds.</li>
+</ul>
+</li>
+<li>The system does not support binocular occlusion.</li>
+</ul>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.008.png" alt=""></p>
+<p><a name="_page4_x45.64_y249.95"></a>Figure 7: Optical design of the proposed system in <a href="#_page10_x45.64_y744.00">23[].</a></p>
+<p>So far, all the mentioned approaches apply liquid crystal displays to block the light from the real world while producing sharp occlusion masks. This provides variable depths for the users and extends the usability. Despite their potential benefits, these methods often rely on complex optical design or bulky hardware, which can lead to challenges in low-light environments due to multi-stacked LCDs or low mask resolution from microlens array layers. Additionally, these designs often require computationally-intensive factored light fields or multiview rendering, which necessitate high-end GPUs for real-time operation<a href="#_page10_x45.64_y301.66">8[]. </a>Therefore, Yuta Itoh and his team utilize single-layer transmissive LCD and suggested a compensation technique to overcome the blurring occlusions caused by liquid crystal diffraction. In occlusion only case in Figure8<a href="#_page4_x45.64_y595.05"> w</a>e can see that there is a black area around the virtual object which is so called an occlusion leak and, by applying the compensation image, the result indicates that the proposed method reduced the occlusion leak error by 61.4% and the occlusion error by 85.7% in intensity[8].</p>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.009.png" alt=""></p>
+<p><a name="_page4_x45.64_y595.05"></a>Figure 8: Compensation demonstration[8].</p>
+<ol>
+<li>Varifocal<a name="_page5_x45.64_y48.76"></a> occlusion-capable AR</li>
+</ol>
+<p>The authors in <a href="#_page10_x45.64_y549.28">[16] </a>proposed a varifocal occlusion-capable see-through AR display that solves the blurring occlusion mask problem based on focus-tunable optics. The work by Itoh et al. requires extremely precise calibration, and any discrepancies in resolution (both spatial and angular), latency, brightness, contrast, or color fidelity between the digital display and the physical world could lead to perceived inconsistencies and reduced perceptual realism within the system<a href="#_page10_x45.64_y589.13">[17].</a> Therefore the authors proposed an optimization method to get the sharp occlusion masks in a fairly large range(300cm) and real-time heuristics to tune the optical settings of their system to avoid distortions of the physical scene. In Figure9<a href="#_page5_x45.64_y264.56"> w</a>e can see that they managed to get sharp occlusion masks for virtual objects at different distances. They also mentioned some unresolved issues:</p>
+<ul>
+<li>The prototype remains large due to the optical challenges</li>
+<li>Eye tracking should be incorporated into such a wearable system.</li>
+<li>There should be optimization of the attenuation pattern that enables consistent illumination, shading, and shadows of both digital and physical objects, as well as provide consistent occlusion[22].</li>
+<li>The field of view is limited due to the commercial lens.</li>
+</ul>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.010.png" alt=""></p>
+<p><a name="_page5_x45.64_y264.56"></a>Figure 9: Varifocal occlusion demonstration<a href="#_page10_x45.64_y549.28">16[].</a></p>
+<ol>
+<li>Occlusion<a name="_page5_x45.64_y542.80"></a> mask alternative</li>
+</ol>
+<p>This year, authors in <a href="#_page10_x45.64_y110.37">2[] </a>proposed an alternative to traditional SLM-based occlusion masks which applies pho- tochromic materials with the illumination of UV light. They applied two SLMs to control the UV light which cause a large form factor. Itoh et al. proposed a more compact version that applies a single SLM to control both the UV and scene light<a href="#_page10_x45.64_y138.82">[3].</a> They applied two HOLs (holographic optical lenses) in the proof-of-concept prototype. The reflective one projects the virtual objects to the viewer’s eye and the transmissive one projects the UV light to the photochromic plate to block the incoming real-view light(see Figure10a<a href="#_page6_x45.64_y42.78">). The</a> use of a photochromic plate avoids the undesired diffractions caused by the electronic components in each pixel as well as the wiring of the transmissive SML<a href="#_page10_x45.64_y549.28">[16]</a> which is known as the screen-door effect(SDE). However, this approach suffers from the soft-edge occlusion mask, and low image quality (see Figure<a href="#_page6_x45.64_y42.78">10b), </a>and inability to perform varifocal occlusions.</p>
+<ol>
+<li>Depth-based<a name="_page5_x45.64_y708.57"></a> occlusion</li>
+<li>Overview</li>
+</ol>
+<p><a name="_page5_x45.64_y728.78"></a>To properly render virtual images and achieve occlusion in AR devices, it is crucial to register real-world objects (RWOs). There are two main approaches to achieving this goal: a model-based approach and a depth-based approach.</p>
+<p>6</p>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.011.png" alt=""></p>
+<p>1) Schematic<a name="_page6_x45.64_y42.78"></a> diagram of photochromic occlusion with stacked HOLs<a href="#_page10_x45.64_y138.82">[3].</a></p>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.012.png" alt=""></p>
+<p>2) UV lighted based occlusion mask[3].</p>
+<p>7</p>
+<p>Figure 10: UV light based occlusion</p>
+<p>The model-based approach assumes that the AR device is aware of the entire 3D environment or has a pre-existing model of it, which limits its applicability to simpler environments such as art AR projects or collaborative virtual environments. As such, this essay will focus more on the depth-based approach, which can be accomplished using either marks or point clouds (PCs). The former approach involves the use of AR markers[14] or<a href="#_page10_x45.64_y493.49"> op</a>tical markers[12] but requires preparatory work such as registration between the marker and the virtual object, as well as manual placement of the markers<a href="#_page10_x45.64_y261.80">7[]. </a>Therefore, I will instead focus on the latter approach, which involves collecting point cloud data.</p>
+<ol>
+<li>Stereo<a name="_page6_x45.64_y375.54"></a> cameras</li>
+</ol>
+<p>As early as 2002, Gordon et al. proposed to use stereo cameras to gather depth information for augmented reality[6]. They applied the Kalman filter to achieve better stability and made the system compact. Later the authors in [11] incorporated this kind of stereo camera system for the ELMO-4. Kiyokawa et al. applied five stereo cameras and frame synchronizers to ensure the gathered camera information is synchronized, however, there still existed some delays which caused the depth map error as shown on the right image in Figure4. <a href="#_page2_x45.64_y497.40">This</a> would be more noticeable when the users move his/her head quickly.</p>
+<ol>
+<li>Time-of-flight<a name="_page6_x45.64_y491.55"></a> camera</li>
+</ol>
+<p>In 2007, <a href="#_page10_x45.64_y166.16">[4]</a> first equipped the Time-of-flight (ToF) to the video see-through AR device to solve the occlusion prob- lem. The authors use a color camera in addition to the ToF camera because the color camera provides additional visual information that can be used to improve the accuracy of occlusion handling. By combining the depth in- formation from the ToF camera with the color information from the color camera, the authors can create more accurate and realistic occlusion masks, which can enhance the overall AR experience for the user. The drawback of this approach is that the depth of information remains noisy and, therefore, hinders the occlusion result as shown in Figure<a href="#_page7_x45.64_y42.78">11 </a>where we can see the head of the virtual ester island statue is improperly occluded. The authors claim that this is largely related to the material of the real occluder and its angle with respect to the time-of-flight camera[4].</p>
+<p>The Hololens 2 might be the most representative optical see-through AR device in the market and the research field. It comes with a ToF camera which is suitable for point cloud registration. The authors in [7] dev<a href="#_page10_x45.64_y261.80">elop</a>ed a reg- istration and superimposing system based on the Hololens 2 and quantitatively analyzed the displacements between the point cloud and the real-world object by placing markers on the Hololens 2 and the real-world objects. The result indicates that the median displacements between the virtual and real markers were 22.3 mm, 35.6 mm, and 13.3 mm for the x-, y-, and z-axes, respectively<a href="#_page10_x45.64_y261.80">7[]. </a>This shows a promising accuracy.</p>
+<p>As mentioned before, the depth quality generated by ToF cameras could be noisy and, according to [26], it<a href="#_page11_x45.64_y116.45"> is </a>largely scene-dependent. The color and reflectiveness of certain materials contribute to inaccurate measurements. This is especially severe for mobile devices like phones. So Zhang et al. proposed an encoder-decoder deep neural network to improve the depth map on commodity ToF cameras. This idea could be applied to the existing occlusion- capable optical see-through AR devices to improve depth map accuracy.</p>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.013.png" alt=""></p>
+<p><a name="_page7_x45.64_y42.78"></a>Figure 11: Virtual easter island statue vertically penetrated by a real piece of cardboard. (Left: depth data. Right: AR image with occlusion handling.)<a href="#_page10_x45.64_y166.16">4[].</a></p>
+<ol>
+<li>DNN-based<a name="_page7_x45.64_y282.70"></a> occlusion-capable AR</li>
+<li>Overview</li>
+</ol>
+<p><a name="_page7_x45.64_y305.41"></a>Most of the DNN-based occlusion research is focusing on video see-through due to the convenience of training and testing. However, this data-driven approach could be applied to speed up or improve the processing of virtual objects to generate occlusion masks under specific use cases.</p>
+<ol>
+<li>Grabbing<a name="_page7_x45.64_y383.23"></a> scenario</li>
+</ol>
+<p>Tang et al. proposed a deep neural network that is capable to take an RGB image and a virtual image as the inputs<a href="#_page10_x45.64_y688.76">[21].</a> They first used an encoder-decoder network to extract the hand from the input real image and then used a separate network to generate the corresponding occlusion masks. Then a detail enhancement module is used to upsample the outcomes. In the training part, they applied synthetic data that are rendered and automatically labeled which greatly reduce the manual labeling workloads. In Table1 w<a href="#_page7_x45.64_y503.24">e can</a> that the overall time of processing is fairly short compared to the add-on Hololens 1 work in Section<a href="#_page1_x45.64_y541.59">2.1.2. And</a> in figure12 <a href="#_page8_x45.64_y42.78">we can</a> see their results perform way better than the depth sensor result.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><a name="_page7_x45.64_y503.24"></a>Stages</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>(i) Inputs (capture hands & render)</p><p>(ii) Network for real-hand extraction</p><p>(iii) Network for occlusion prediction</p><p>&emsp;(iv) Image composition</p></td>
+<td>10ms 7ms 8ms 6ms</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>31ms</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Table 1: Time taken by each stage of the hand tracking system[26].</p>
+<ol>
+<li>Assembly<a name="_page7_x45.64_y630.36"></a> line scenario</li>
+</ol>
+<p>In <a href="#_page10_x45.64_y465.60">[13],</a> the authors proposed the AR-Centernet architecture, which utilizes an encoder-decoder network and a feature map to generate depth and hotspot maps from RGB images of parts on an assembly line. These maps are used to calculate camera pose and address occlusions, respectively. To support their approach, the authors created a dataset that includes RGB images (as well as augmented ones), preprocessed depth maps, and 3D models of the parts. Their experimental results, shown in Tables 2 <a href="#_page8_x45.64_y199.33">and</a> 3, <a href="#_page8_x45.64_y282.22">demonstrate</a> the superiority of their proposed method in terms of occlusion handling and AR registration times compared to other commonly used approaches.</p>
+<p><img src="Aspose.Words.73ecc3d0-fcf8-412e-97a9-18e18836baf1.014.png" alt=""></p>
+<p><a name="_page8_x45.64_y42.78"></a>Figure 12: Occlusion results comparisons <a href="#_page11_x45.64_y116.45">[26].</a></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><a name="_page8_x45.64_y199.33"></a>Occlusion handling</th>
+<th>Azure Kinect</th>
+<th>DenseDepth</th>
+<th>AR-Centernet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time consumption (ms) Frame rate(FPS)</td>
+<td>41.52 24.08</td>
+<td>1012.81 0.99</td>
+<td>11.50 86.96</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Table 2: The comparison of the time consumption of depth map captures used in different methods in assembly experiments<a href="#_page10_x45.64_y465.60">[13].</a></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><a name="_page8_x45.64_y282.22"></a>AR registration</th>
+<th>ORB</th>
+<th>SURF</th>
+<th>SIFT</th>
+<th>AR-Centernet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time consumption (ms) Frame rate(FPS)</td>
+<td>200.61 4.98</td>
+<td>253.09 3.95</td>
+<td>761.25 1.31</td>
+<td>11.50 86.96</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Table 3: The comparison of the time consumption of AR registration used in different methods in assembly experi- ments<a href="#_page10_x45.64_y465.60">[13].</a></p>
+<p>3  Conclusion</p>
+<p><a name="_page8_x45.64_y379.06"></a>After examining the research conducted in recent years, it is evident that no optical see-through system exists that can completely overcome all the challenges and give seamless and natural mutual occlusions in real-time. However, these works showed promising progress in many aspects. I would like to analyze each of the aspects and discuss possible solutions to the challenges.</p>
+<p>The main challenges for an ideal occlusion-capable optical see-through AR device include:</p>
+<ul>
+<li>Small form factor: Keeping the overall optical structure and computing units small and wearable.</li>
+<li>Depth sensing: Accurately estimating the depth of real-world objects to enable correct virtual object placement and occlusion with respect to the user’s viewpoint.</li>
+<li>Latency: Minimizing the delay between capturing real-world data, processing it, and rendering the augmented scene to ensure realistic interactions and occlusion.</li>
+<li>Display technology limitations: Achieving high-resolution, high-contrast, and wide field-of-view displays.</li>
+<li>Real-time environment mapping: Continuously updating the 3D representation of the environment to account for dynamic changes, such as moving objects, varying lighting conditions, and user movement.</li>
+<li>Occlusion culling: Efficiently determining which virtual objects should be rendered in front of or behind real- world objects to create realistic occlusion.</li>
+<li>Light field rendering: Accurately simulating the way light interacts with real-world objects and virtual objects to maintain consistent lighting and shading conditions, enhancing the perception of occlusion.</li>
+<li>Edge blending and color matching: Ensuring seamless blending of real and virtual objects, including matching the colors, brightness, and contrast levels between the two.</li>
+<li>Eye tracking and accommodation: Accurately tracking the user’s eye movements and adjusting the focus of virtual objects accordingly to create a natural and comfortable visual experience.</li>
+<li>Calibration and registration: Precisely aligning the virtual content with the real-world environment, including accounting for individual differences in eye anatomy, interpupillary distance, and head position.</li>
+<li>Robustness to environmental conditions: Ensuring that the occlusion capabilities work effectively across a range of lighting conditions, occlusion scenarios, and scene complexities.</li>
+</ul>
+<p>The challenges outlined earlier cannot be addressed concurrently; however, they can be mitigated to a certain degree. Future research could explore the integration of the compact structure proposed by Chun et al. [3] with<a href="#_page10_x45.64_y138.82"> the </a>varifocal structure suggested by Rathinavel et al. <a href="#_page10_x45.64_y549.28">16[]. By</a> attaching a mirror to the QWP, Chun et al. achieved a more compact form factor by reflecting the propagating light along an optical path four times longer, in contrast to the full 4f structure presented in <a href="#_page10_x45.64_y549.28">16[]. </a>Moreover, the second part of Chun et al.’s add-on approach [3] <a href="#_page10_x45.64_y138.82">effectiv</a>ely eliminates viewpoint offsets. The integration of additional components, such as focus-tunable lenses and eye track- ers, would be necessary for the varifocal system, which is capable of providing hard-edge occlusions. Furthermore, employing LCoS technology to improve color aberrations<a href="#_page10_x45.64_y672.82">20[] and</a> reduce the screen-door effect, along with the use of achromatic optical components, could enhance the transparency issue. The linear polarizer (LP) from previous work can be utilized to fine-tune the occlusion functionality. Regarding the field of view, a double ellipsoidal mirror structure might be required, as suggested by Zhang et al. [25].</p>
+<p>To improve depth map accuracy and enhance system robustness in various environmental conditions, a trained deep neural network may be employed, as proposed by Zhang et al. [26].<a href="#_page11_x45.64_y116.45"> Another</a> possible approach involves using both stereo and ToF data to obtain depth information (also known as the hybrid vision[9]), <a href="#_page10_x45.64_y342.06">leveraging</a> the multiple cameras and ToF camera found in both HoloLens 1 and 2 <a href="#_page10_x45.64_y521.39">15[].</a></p>
+<p>By narrowing the use case to specific environments where some or all real-world objects are known, or in scenarios involving well-studied objects like hand gestures, the methodologies presented in [13] <a href="#_page10_x45.64_y465.60">and/or</a> [21] <a href="#_page10_x45.64_y688.76">could</a> be applied. These DNN-powered approaches enable faster processing of occlusion and registration.</p>
+<p>In summary, devising a comprehensive solution to the mutual occlusion problem in Optical see-through near-eye displays (OST-NEDs) remains an open challenge. The obstacles faced in both hardware and software have yet to be fully overcome.</p>
+<p>References</p>
+<ol>
+<li>Ozan<a name="_page10_x45.64_y68.59"></a> Cakmakci, Yonggang Ha, and Jannick P Rolland. “A compact optical see-through head-worn display with occlusion support”. In: Third IEEE and ACM International Symposium on Mixed and Augmented Reality. IEEE. 2004, pp. 16–25.</li>
+<li>Minseok<a name="_page10_x45.64_y110.37"></a> Chae et al. “Occlusion-capable see-through display without the screen-door effect using a photochromic mask”. In: Optics Letters 46.18 (2021), pp. 4554–4557.</li>
+<li>Yuta<a name="_page10_x45.64_y138.82"></a> Itoh Chun Wei Ooi Yuichi Hiroi. “A Compact Photochromic Occlusion Capable see-Through Display with Holographic Lenses”. In: vol. 29. 6. IEEE. 2023, pp. 237–242.</li>
+<li>Jan<a name="_page10_x45.64_y166.16"></a> Fischer, Benjamin Huhle, and Andreas Schilling. “Using Time-of-Flight Range Data for Occlusion Handling in Augmented Reality.” In: IPT/EGVE 109116 (2007).</li>
+<li>Chunyu<a name="_page10_x45.64_y194.61"></a> Gao, Yuxiang Lin, and Hong Hua. “Occlusion capable optical see-through head-mounted display using freeform optics”. In: 2012 IEEE International Symposium on Mixed and Augmented Reality (ISMAR). IEEE. 2012, pp. 281–282.</li>
+<li>G.<a name="_page10_x45.64_y233.91"></a> Gordon et al. “The use of dense stereo range data in augmented reality”. In: Proceedings. International Symposium on Mixed and Augmented Reality. 2002, pp. 14–23. doi: <a href="https://doi.org/10.1109/ISMAR.2002.1115063">10.1109/ISMAR.2002.1115063.</a></li>
+<li>Felix<a name="_page10_x45.64_y261.80"></a> von Haxthausen, Yenjung Chen, and Floris Ernst. “Superimposing holograms on real world objects using HoloLens 2 and its depth camera”. In: Current Directions in Biomedical Engineering. Vol. 7. 1. De Gruyter. 2021, pp. 111–115.</li>
+<li>Yuta<a name="_page10_x45.64_y301.66"></a> Itoh, Takumi Hamasaki, and Maki Sugimoto. “Occlusion leak compensation for optical see-through dis- plays using a single-layer transmissive spatial light modulator”. In: IEEE transactions on visualization and computer graphics 23.11 (2017), pp. 2463–2473.</li>
+<li>Simon<a name="_page10_x45.64_y342.06"></a> Julier. Week3 - Tracking and Sensing for Mixed and Virtual Reality. 2023.</li>
+<li>Takumi<a name="_page10_x45.64_y358.00"></a> Kaminokado, Yuichi Hiroi, and Yuta Itoh. “Stainedview: Variable-intensity light-attenuation display with cascaded spatial color filtering for improved color fidelity”. In: IEEE Transactions on Visualization and Computer Graphics 26.12 (2020), pp. 3576–3586.</li>
+<li>Kiyoshi<a name="_page10_x45.64_y397.85"></a> Kiyokawa et al. “An occlusion capable optical see-through head mount display for supporting co-located collaboration”. In: The Second IEEE and ACM International Symposium on Mixed and Augmented Reality, 2003. Proceedings. IEEE. 2003, pp. 133–141.</li>
+<li>Christian<a name="_page10_x45.64_y437.15"></a> Kunz et al. “Infrared marker tracking with the HoloLens for neurosurgical interventions”. In: Current Directions in Biomedical Engineering 6.1 (2020).</li>
+<li>Wang<a name="_page10_x45.64_y465.60"></a> Li et al. “Integrated Registration and Occlusion Handling Based on Deep Learning for Augmented Reality Assisted Assembly Instruction”. In: IEEE Transactions on Industrial Informatics (2022).</li>
+<li>Rafael<a name="_page10_x45.64_y493.49"></a> Moreta-Martinez et al. “Augmented reality in computer-assisted interventions based on patient-specific 3D printed reference”. In: Healthcare technology letters 5.5 (2018), pp. 162–166.</li>
+<li>Matteo<a name="_page10_x45.64_y521.39"></a> Poggi et al. “Confidence estimation for ToF and stereo sensors and its application to depth data fusion”. In: IEEE Sensors Journal 20.3 (2019), pp. 1411–1421.</li>
+<li>Kishore<a name="_page10_x45.64_y549.28"></a> Rathinavel, Gordon Wetzstein, and Henry Fuchs. “Varifocal occlusion-capable optical see-through augmented reality display based on focus-tunable optics”. In: IEEE transactions on visualization and computer graphics 25.11 (2019), pp. 3125–3134.</li>
+<li>Jannick<a name="_page10_x45.64_y589.13"></a> P Rolland and Henry Fuchs. “Optical versus video see-through head-mounted displays in medical visualization”. In: Presence 9.3 (2000), pp. 287–309.</li>
+<li>Manisah<a name="_page10_x45.64_y617.03"></a> Mohd Shah, Haslina Arshad, and Riza Sulaiman. “Occlusion in augmented reality”. In: 2012 8th International Conference on Information Science and Digital Content Technology (ICIDT2012). Vol. 2. IEEE. 2012, pp. 372–378.</li>
+<li>Anthony<a name="_page10_x45.64_y656.33"></a> Steed. Week2 - Mixed Reality. 2023.</li>
+<li>Anthony<a name="_page10_x45.64_y672.82"></a> Steed. Week2 - Virtual Reality Display Systems. 2023.</li>
+<li>Xiao<a name="_page10_x45.64_y688.76"></a> Tang et al. “GrabAR: Occlusion-aware grabbing virtual objects in AR”. In: Proceedings of the 33rd Annual ACM Symposium on User Interface Software and Technology. 2020, pp. 697–708.</li>
+<li>Gordon<a name="_page10_x45.64_y716.10"></a> Wetzstein, Wolfgang Heidrich, and David Luebke. “Optical image processing using light modulation displays”. In: Computer Graphics Forum. Vol. 29. 6. Wiley Online Library. 2010, pp. 1934–1944.</li>
+<li>Yan<a name="_page10_x45.64_y744.00"></a> Zhang et al. “Add-on Occlusion: Turning Off-the-Shelf Optical See-through Head-mounted Displays Occlusion-capable”. In: IEEE Transactions on Visualization and Computer Graphics (2023).</li>
+<li>Yan<a name="_page11_x45.64_y48.76"></a> Zhang et al. “Realizing mutual occlusion in a wide field-of-view for optical see-through augmented reality displays based on a paired-ellipsoidal-mirror structure”. In: Optics Express 29.26 (2021), pp. 42751–42761.</li>
+<li>Yan<a name="_page11_x45.64_y77.15"></a> Zhang et al. “Super wide-view optical see-through head mounted displays with per-pixel occlusion ca- pability”. In: 2020 IEEE International Symposium on Mixed and Augmented Reality (ISMAR). IEEE. 2020, pp. 301–311.</li>
+<li>Yunfan<a name="_page11_x45.64_y116.45"></a> Zhang et al. “InDepth: Real-time depth inpainting for mobile augmented reality”. In: Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies 6.1 (2022), pp. 1–25.<br>12</li>
+</ol>

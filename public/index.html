@@ -1,1543 +1,227 @@
 <!DOCTYPE html>
-<html lang="zh/hans">
+<html lang=zh>
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"kymer0615.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta name="description" content="If you know, you know.">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="*Ziyang Chen* is currently a master student at University College London and an intern at Computational Light Laboratory led by Kaan Akşit. His B.S degree in computer science is in King&#39;s College">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Cyber Ghetto">
+<meta property="og:title" content="Ziyang Chen">
 <meta property="og:url" content="https://kymer0615.github.io/index.html">
-<meta property="og:site_name" content="Cyber Ghetto">
-<meta property="og:description" content="If you know, you know.">
+<meta property="og:site_name" content="Ziyang Chen">
+<meta property="og:description" content="*Ziyang Chen* is currently a master student at University College London and an intern at Computational Light Laboratory led by Kaan Akşit. His B.S degree in computer science is in King&#39;s College">
 <meta property="og:locale">
-<meta property="article:author" content="Kymer">
+<meta property="article:author" content="Ziyang">
 <meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Ziyang Chen</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
 
-<link rel="canonical" href="https://kymer0615.github.io/">
+
+    <!-- Umami Analytics -->
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh/hans'
-  };
-</script>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
 
-  <title>Cyber Ghetto</title>
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4 h-card">
+        
+          <header id="header">
+  <a class="u-url u-uid" href="/">
   
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div id="title">
+      <h1 class="p-name">Ziyang Chen</h1>
     </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-2x"></i></a>
+      </li>
+      <!--
+     --><li><a href="/">Home</a></li><!--
+   --><!--
+     --><li><a href="/about/">About</a></li><!--
+   --><!--
+     --><li><a href="/publications/">Publications</a></li><!--
+   --><!--
+     --><li><a href="/archives/">Writing</a></li><!--
+   --><!--
+     --><li><a target="_blank" rel="noopener" href="https://github.com/Kymer0615">Projects</a></li><!--
+   -->
+    </ul>
   </div>
+</header>
 
-  <div class="site-meta">
+        
+        <section id="about" class="p-note">
+  
+    <p><em>Ziyang Chen</em> is currently a master student at <a target="_blank" rel="noopener" href="https://www.ucl.ac.uk/">University College London</a> and an intern at <a target="_blank" rel="noopener" href="https://complightlab.com/">Computational Light Laboratory</a> led by <a target="_blank" rel="noopener" href="https://kaanaksit.com/">Kaan Akşit</a>. His B.S degree in computer science is in <a target="_blank" rel="noopener" href="https://www.kcl.ac.uk/">King&#39;s College London</a>, UK, in 2021. Ziyang&#39;s interests lie on computational imaging, ARVR, AIGC, and holograms.</p>
 
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Cyber Ghetto</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
+  
+  
+    <p>
+      Find me on
+      
+      
+      
+        
+        
+          <a class="icon u-url" target="_blank" rel="noopener me" href="https://github.com/Kymer0615" aria-label="github" title="github">
+            <i class="fa-brands fa-github"></i><!--
+      ---></a><!--
+    ---><!--
+    ---> and 
+        
+      
+        
+        
+          <a class="icon u-email" target="_blank" rel="noopener" href="mailto:ucabzc8@ucl.ac.uk" aria-label="mail" title="mail">
+            <i class="fa-solid fa-envelope"></i><!--
+      ---></a>
+        <!--
+    --->.
+        
+      
+    </p>
+  
+</section>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+<section id="writing">
+  <span class="h1"><a href="/archives/">Writing</a></span>
+  
+  <ul class="post-list">
+    
+    
+      
+    
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2021-06-29T15:21:55.000Z" class="dt-published" itemprop="datePublished">2021-06-29</time>
+        
+      
     </div>
-  </div>
-</div>
 
 
+        <span>
+    
+        <a class="" href="/2021/06/29/Scrapy/">Scrapy study</a>
+    
 
 
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
+</span>
+      </li>
+    
   </ul>
-</nav>
+  
+</section>
 
 
 
-
-</div>
-    </header>
-
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+    
+    2023
+    Ziyang
   </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/13/gan/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/13/gan/" class="post-title-link" itemprop="url">Generative Adversarial Network</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-08-13 14:17:55 / Modified: 16:33:23" itemprop="dateCreated datePublished" datetime="2021-08-13T14:17:55+08:00">2021-08-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/08/13/gan/" class="post-meta-item leancloud_visitors" data-flag-title="Generative Adversarial Network" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/08/13/gan/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/13/gan/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><script src="//yihui.org/js/math-code.js"></script><br><!-- Just one possible MathJax CDN below. You may use others. --></p>
-<p><script async
-  src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script></p>
-<h1 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h1><ul>
-<li>Generator <strong>G</strong><ul>
-<li>Create some high dimensional object that can fool the discriminator</li>
-</ul>
-</li>
-<li>Discriminator <strong>D</strong><ul>
-<li>Criticize the the outputs form the Generator</li>
-</ul>
-</li>
-<li>Data distribution <strong>p<sub>data</sub></strong></li>
-<li>Noise distribution <strong>p<sub>z</sub></strong><ul>
-<li>Relatively low dimensional space<br><a target="_blank" rel="noopener" href="https://ibb.co/GWg1Jmq"><img src="https://i.ibb.co/T4znTys/1281628836217-pic-hd.png" alt="1281628836217-pic-hd" border="0"></a></li>
-</ul>
-</li>
-</ul>
-<h2 id="Generator-step"><a href="#Generator-step" class="headerlink" title="Generator step:"></a>Generator step:</h2><ul>
-<li>Keep the weights in the discriminator </li>
-<li>Update <strong>G</strong> based on the loss produced by <strong>D</strong><h2 id="Discriminator-step"><a href="#Discriminator-step" class="headerlink" title="Discriminator step:"></a>Discriminator step:</h2></li>
-<li><strong>D</strong> inputs a sample from <strong>G</strong> based on <strong>p<sub>z</sub></strong> and we want the loss to be high</li>
-<li>Keep the weights in the <strong>G</strong></li>
-<li><strong>D</strong> inputs a sample from real world example to make sure the <strong>D</strong> can still distinguish the real ones and fakes
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/13/gan/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/13/command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/13/command/" class="post-title-link" itemprop="url">Frequently used commands</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-08-13 11:18:53 / Modified: 11:29:04" itemprop="dateCreated datePublished" datetime="2021-08-13T11:18:53+08:00">2021-08-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/08/13/command/" class="post-meta-item leancloud_visitors" data-flag-title="Frequently used commands" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/08/13/command/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/13/command/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="General"><a href="#General" class="headerlink" title="General"></a>General</h1><ul>
-<li>The z-shell file<ul>
-<li>~/.zshrc</li>
-</ul>
-</li>
-<li>Set environment variable<ul>
-<li>alias python=python2
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/13/command/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/06/ByTheRiver/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/06/ByTheRiver/" class="post-title-link" itemprop="url">By the river</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-08-06 21:02:58 / Modified: 22:52:04" itemprop="dateCreated datePublished" datetime="2021-08-06T21:02:58+08:00">2021-08-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B6%82%E9%B8%A6-Graffiti/" itemprop="url" rel="index"><span itemprop="name">涂鸦 Graffiti</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/08/06/ByTheRiver/" class="post-meta-item leancloud_visitors" data-flag-title="By the river" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/08/06/ByTheRiver/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/06/ByTheRiver/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>WE NEED PLACES THAT CAN BE SEEN BY THE PUBLIC AND OTHER WRITERS; These stairs by the river are just perfect – we could spend as much time as we want to decide which colors would be the fill-in, outline, etc.<br>Normally, after the bombing, we would use the left over cans to do these PLUS straight letters. Clearly we did not have many colors to choose from but it made it more interesting.<br><a target="_blank" rel="noopener" href="https://ibb.co/zrZCqhJ"><img src="https://i.ibb.co/FKzcRbV/IMG-9048.jpg" alt="IMG-9048" border="0"></a></p>
-<ul>
-<li>One of first PLUS straight letters by the river⬆.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/06/ByTheRiver/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/03/python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/03/python/" class="post-title-link" itemprop="url">Python</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-08-03 10:54:51" itemprop="dateCreated datePublished" datetime="2021-08-03T10:54:51+08:00">2021-08-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-10 10:35:53" itemprop="dateModified" datetime="2021-08-10T10:35:53+08:00">2021-08-10</time>
-              </span>
-
-          
-            <span id="/2021/08/03/python/" class="post-meta-item leancloud_visitors" data-flag-title="Python" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/08/03/python/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/03/python/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>eval and exec<ul>
-<li>eval 参数字段内不能赋值</li>
-<li>exec 参数字段内赋值很可能会跨域</li>
-</ul>
-</li>
-<li><strong>is</strong> VS <strong>==</strong><ul>
-<li>is 比较两个对象的 id 值是否相等，是否指向同一个内存地址</li>
-<li>== 比较的是两个对象的内容是否相等，值是否相等</li>
-<li>小整数对象[-5,256]在全局解释器范围内被放入缓存供重复使用</li>
-<li>is 运算符比 == 效率高，在变量和None进行比较时，应该使用 is
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/03/python/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/08/01/Pytorch%20CAPTCHA%20Validation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/01/Pytorch%20CAPTCHA%20Validation/" class="post-title-link" itemprop="url">Pytorch CAPTCHA Validation</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-08-01 15:15:21" itemprop="dateCreated datePublished" datetime="2021-08-01T15:15:21+08:00">2021-08-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-12 11:37:12" itemprop="dateModified" datetime="2021-08-12T11:37:12+08:00">2021-08-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/08/01/Pytorch%20CAPTCHA%20Validation/" class="post-meta-item leancloud_visitors" data-flag-title="Pytorch CAPTCHA Validation" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/08/01/Pytorch%20CAPTCHA%20Validation/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/01/Pytorch%20CAPTCHA%20Validation/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose"></a>Purpose</h1><p>This project is used as of a module to pass the CAPTCHA validations so that the crawler can download the desired documents. </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/01/Pytorch%20CAPTCHA%20Validation/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/07/23/CV%20study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/23/CV%20study/" class="post-title-link" itemprop="url">Open CV study</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-23 15:15:21" itemprop="dateCreated datePublished" datetime="2021-07-23T15:15:21+08:00">2021-07-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-10 10:42:25" itemprop="dateModified" datetime="2021-08-10T10:42:25+08:00">2021-08-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/07/23/CV%20study/" class="post-meta-item leancloud_visitors" data-flag-title="Open CV study" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/07/23/CV%20study/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/23/CV%20study/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Pixels-and-colors"><a href="#Pixels-and-colors" class="headerlink" title="Pixels and colors"></a>Pixels and colors</h1><ul>
-<li>The pixel can be considered as function containing the x and y coordinates.</li>
-<li>The function outputs a color represented by a <strong>8-bit number(0-255)</strong>.</li>
-<li>The RGB model indicates three “channels” and each channel indicates a color.</li>
-<li><strong>PPI</strong> stands “for pixel per inch” <ul>
-<li>How many pixels along the width(inches) or height(inches).</li>
-</ul>
-</li>
-<li>The (0,0) of an image in OpenCV is at the <strong>upper left corner</strong>.<h1 id="Image-processing"><a href="#Image-processing" class="headerlink" title="Image processing"></a>Image processing</h1></li>
-<li><strong>Paddings</strong> are very useful when some of the letters or digits are too big to find contours.</li>
-<li><strong>Erosion</strong> is useful to remove noises.</li>
-<li><strong>Image moment</strong> is a certain particular weighted average (moment) of the image pixels’ intensities, or a function of such moments, usually chosen to have some attractive property or interpretation.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/23/CV%20study/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/07/21/Crawler/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/21/Crawler/" class="post-title-link" itemprop="url">Crawler study</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-21 16:22:55" itemprop="dateCreated datePublished" datetime="2021-07-21T16:22:55+08:00">2021-07-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-13 11:29:12" itemprop="dateModified" datetime="2021-08-13T11:29:12+08:00">2021-08-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B-Programming/" itemprop="url" rel="index"><span itemprop="name">编程 Programming</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/07/21/Crawler/" class="post-meta-item leancloud_visitors" data-flag-title="Crawler study" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/07/21/Crawler/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/21/Crawler/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Crawler理解"><a href="#Crawler理解" class="headerlink" title="Crawler理解"></a>Crawler理解</h1><ul>
-<li>找到主网页下的URL列表<ol>
-<li>直接通过<strong>Xpath解析</strong>获得所需要的URL<ul>
-<li>找到@href属性下的URL字段可能并不完整,需要后续通过观察拼接来得到最终字段</li>
-</ul>
-</li>
-<li>主网页无法直接获取的情况可以通过<strong>观察XHR来判断数据获取的方式</strong>,一般使用GET或者POST来获取一个JSON文件<ul>
-<li>找到JSON对应的key就可以得到URL</li>
-</ul>
-</li>
-<li>主网页使用JavaScript生成动态页面的情况可以使用<strong>selenium来模拟浏览器访问</strong>或者<strong>观察a 标签所包含的值与对应页面的关系,然后进行字段的拼接</strong></li>
-</ol>
-</li>
-<li>获得访问下一页的URL<ol>
-<li>解决方案和上面类似,在拼接字段的时候可能使用<strong>正则</strong>来处理对应情况</li>
-<li>需要设计如何控制访问页数,可能需要通过正则从URL获取相关信息或者从JSON里获取[或者直接控制总的量]</li>
-</ol>
-</li>
-<li>对具体页面进行解析<ol>
-<li>使Xpath获取对应的信息</li>
-<li>使用正则来处理获取之后的信息</li>
-<li>下载链接或者图片的链接很可能并非完整</li>
-<li></li>
-</ol>
-</li>
-<li>设计<ol>
-<li>使用stream的思想叠加method来解析</li>
-<li>控制访问的速率特别是异步的情况</li>
-<li>使用IP池</li>
-</ol>
-</li>
-</ul>
-<h1 id="Issues"><a href="#Issues" class="headerlink" title="Issues"></a>Issues</h1><ul>
-<li>国标网站抓取<ul>
-<li>对于国标网站进行抓取时,Requests库中的session无法自动传递Cookie<ul>
-<li>使用r.request.prepare_cookies(r.cookies)来传递</li>
-</ul>
-</li>
-<li>下载附件时需要验证码<ul>
-<li>使用CNN来训练模型,训练正确率可达99%,满足实际使用</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/07/02/Stickers/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/02/Stickers/" class="post-title-link" itemprop="url">Stickers</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-02 14:42:20" itemprop="dateCreated datePublished" datetime="2021-07-02T14:42:20+08:00">2021-07-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-08 13:56:58" itemprop="dateModified" datetime="2021-07-08T13:56:58+08:00">2021-07-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B6%82%E9%B8%A6-Graffiti/" itemprop="url" rel="index"><span itemprop="name">涂鸦 Graffiti</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/07/02/Stickers/" class="post-meta-item leancloud_visitors" data-flag-title="Stickers" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/07/02/Stickers/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/02/Stickers/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>This time we invited Eryk to join us doing graffiti on the wall. I made the metal-ish effect on my letters because they looked cool. Gab did a shout out to our friend 局长 who shared a good time with us. Eryk did a shark with a knife cutting through its belly. I particularly like the way the colors of my letters sort of connected the other works.<br><a target="_blank" rel="noopener" href="https://ibb.co/j3Bv9LF"><img src="https://i.ibb.co/9yz9mqj/IMG-5301.jpg" alt="IMG-5301" border="0" width="600"></a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/02/Stickers/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/07/02/Explore/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/02/Explore/" class="post-title-link" itemprop="url">Exploration</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-02 11:33:36" itemprop="dateCreated datePublished" datetime="2021-07-02T11:33:36+08:00">2021-07-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-08 11:48:04" itemprop="dateModified" datetime="2021-07-08T11:48:04+08:00">2021-07-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B6%82%E9%B8%A6-Graffiti/" itemprop="url" rel="index"><span itemprop="name">涂鸦 Graffiti</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/07/02/Explore/" class="post-meta-item leancloud_visitors" data-flag-title="Exploration" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/07/02/Explore/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/02/Explore/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>An absolutely safe spot made us more eager to try different things and we would not have to stay up late to avoid cops or 城管(chengguan). The room we painted did not have much air flowing and the industrial paints were just pungent so, after painting for a while, we would feel sick and dizzy.(we even ate some sandwiches there… so retarded)</p>
-<!-- 我们想去尝试更多的东西因为我们找到了一个不用熬夜、不用担心警察或者城管的、绝对安全的涂鸦地点。工业漆味道十分大而且我们所在的房间还不怎么通风，没过多久就会想头晕想吐... -->
-<p><a target="_blank" rel="noopener" href="https://ibb.co/ZH99fJb"><img src="https://i.ibb.co/TKyywTN/IMG-4790.jpg" alt="IMG-4790" border="0" width="400" style="transform:rotate(90deg);"></a></p>
-<ul>
-<li>Some industrial cans we bought and most of them did not have too much paint in it⬆.<!-- - 一些我们买的工业漆，里面大多数买来就不是满的⬆。 -->
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/02/Explore/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh/hans">
-    <link itemprop="mainEntityOfPage" href="https://kymer0615.github.io/2021/07/01/OurSpot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Kymer">
-      <meta itemprop="description" content="If you know, you know.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cyber Ghetto">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/01/OurSpot/" class="post-title-link" itemprop="url">Our Spot</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-01 00:54:23" itemprop="dateCreated datePublished" datetime="2021-07-01T00:54:23+08:00">2021-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-08 11:47:09" itemprop="dateModified" datetime="2021-07-08T11:47:09+08:00">2021-07-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B6%82%E9%B8%A6-Graffiti/" itemprop="url" rel="index"><span itemprop="name">涂鸦 Graffiti</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/07/01/OurSpot/" class="post-meta-item leancloud_visitors" data-flag-title="Our Spot" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/07/01/OurSpot/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/01/OurSpot/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>We just could not resist the feeling of releasing the pressure from the cans on the streets – a mixture of adrenaline and satisfaction so we bought more industrial cans and spray the paints on the walls and many other surfaces. We would ride shared bikes on the 2nd ring road doing simple letters and taking photos of other local writers’ works.</p>
-<!-- 在街上将喷漆罐的压力释放是一件很爽的事情--它带来了肾上腺素和满足感， 所以我们买了更多的工业喷漆在墙上和其他表面喷字母。我们一般会骑共享单车在二环路上寻找好的地方然后喷一些简单的字母或者寻找并拍下本地写手的作品。 -->
-<p><a target="_blank" rel="noopener" href="https://ibb.co/cCK4CXL"><img src="https://i.ibb.co/qWLTWF5/IMG-3578.jpg" alt="IMG-3578" border="0" width="600"></a></p>
-<ul>
-<li>Me doing a quick one on a graffiti that was cleaned(used it as the fillin)⬆.<!-- - 我正在一个被刷的涂鸦上喷涂鸦（把被刷的部分当作是底色）⬆。 -->
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/01/OurSpot/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/publications/">Publications</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Kymer0615">Projects</a></li><!--
+     -->
       </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Kymer</p>
-  <div class="site-description" itemprop="description">If you know, you know.</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">13</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">9</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/Kymer0615" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Kymer0615" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://instagram.com/Kymer_444" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;Kymer_444" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
-      </span>
+    </nav>
   </div>
-
-
-
-      </div>
+</footer>
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+    <!-- styles -->
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Kymer</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
-  </div>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- jquery -->
 
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
 
 
 
 
+<!-- clipboard -->
 
 
+<script src="/js/main.js"></script>
 
+<!-- search -->
 
-      </div>
-    </footer>
-  </div>
+<!-- Baidu Analytics -->
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<!-- Cloudflare Analytics -->
 
-<script src="/js/utils.js"></script>
+<!-- Disqus Comments -->
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/canvas_lines.min.js"></script>
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
-
-  
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : 'jMzJ2pEXPe5P1IImhArwDeVx-gzGzoHsz',
-      appKey     : 'wm9DBHKSYjaSTtsWfDM5xFbD',
-      placeholder: "Leave a comment ;)",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : true,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : true,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
+<!-- utterances Comments -->
 
 </body>
 </html>

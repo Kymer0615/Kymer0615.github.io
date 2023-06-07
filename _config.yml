@@ -3,13 +3,14 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Cyber Ghetto
+title: Ziyang Chen
 subtitle: ''
-description: 'If you know, you know.'
-keywords:
-author: Kymer
+description: '*Ziyang Chen* is currently a master student at <a href="https://www.ucl.ac.uk/">University College London</a> and an intern at <a href="https://complightlab.com/">Computational Light Laboratory</a> led by <a href="https://kaanaksit.com/">Kaan Akşit</a>. His B.S degree in computer science is in <a href="https://www.kcl.ac.uk/">King&#39;s College London</a>, UK, in 2021. Ziyang&#39;s interests lie on computational imaging, ARVR, AIGC, and holograms.'
+keywords: 
+
+author: Ziyang
 language: zh/hans
-timezone: 'Asia/Shanghai'
+timezone: 'Europe/London'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -99,14 +100,11 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: cactus
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   - type: git
     repo: git@github.com:Kymer0615/Kymer0615.github.io
-    branch: master
-  - type: git
-    repo: git@e.coding.net:kymer0615/kymer0615.coding.me/Kymer0615.coding.me.git
     branch: master
